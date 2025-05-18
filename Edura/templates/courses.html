@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Courses - Edura | Find Your Path to Success</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      /* Palette based on #80acf8 (from previous successful implementation) */
+      --primary-blue: #3A5F94;
+      --secondary-blue: #5C85CB;
+      --accent-blue: #80acf8;
+      --highlight-glow: #A5C8FA;
+      --light-blue-bg-tint: #EBF1FF;
+
+      --light-bg: var(--light-blue-bg-tint);
+      --light-bg-alt: #FFFFFF;
+
+      --text-dark: #1A202C;
+      --text-dark-secondary: #4A5568;
+      --text-light: #FFFFFF;
+      --text-light-secondary: #F0F8FF;
+
+      --font-heading: 'Bricolage Grotesque', 'Arial Narrow Bold', sans-serif;
+      --font-body: 'Inter', sans-serif;
+
+      --shadow-sm: 0 2px 6px rgba(58, 95, 148, 0.08);
+      --shadow-md: 0 4px 12px rgba(58, 95, 148, 0.12);
+      --shadow-lg: 0 10px 20px rgba(58, 95, 148, 0.15);
+      --shadow-xl: 0 15px 30px rgba(58, 95, 148, 0.18);
+
+      --border-radius-sm: 8px;
+      --border-radius-md: 16px;
+      --border-radius-lg: 24px;
+      --border-radius-pill: 50px;
+
+      --transition-fast: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-med: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; } 
+
+    /* --- Header & Navigation (Identical to previous pages) --- */
+    header {
+      background-color: var(--primary-blue); 
+      color: var(--text-light); padding: 16px 0;
+      position: sticky; top: 0; z-index: 1000; 
+      box-shadow: 0 2px 8px rgba(58, 95, 148, 0.2); 
+      transition: background-color var(--transition-med), box-shadow var(--transition-med);
+    }
+    header.scrolled {
+      background-color: rgba(58, 95, 148, 0.85); 
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);        
+      box-shadow: 0 4px 12px rgba(58, 95, 148, 0.25);
+    }
+    .header-content {
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1360px; margin: 0 auto; padding: 0 25px;
+    }
+    .logo { display: flex; align-items: center; }
+    .logo-icon {
+      font-size: 2rem; color: var(--accent-blue); margin-right: 12px; 
+      transition: transform var(--transition-fast) ease-in-out;
+    }
+    .logo:hover .logo-icon { transform: rotate(-10deg) scale(1.15); }
+    .logo a {
+      font-family: var(--font-heading); font-size: 2.4rem; font-weight: 700;
+      color: var(--text-light); text-decoration: none; letter-spacing: -0.5px;
+    }
+    .logo a span {
+      background: linear-gradient(60deg, var(--text-light) 15%, var(--accent-blue) 85%);
+      -webkit-background-clip: text; -moz-background-clip: text; background-clip: text;
+      color: transparent; font-weight: 700;
+    } 
+    nav { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
+    nav a {
+      color: var(--text-light-secondary); text-decoration: none;
+      padding: 10px 14px; margin: 0 4px;    
+      font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; border-radius: var(--border-radius-sm);
+      transition: color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+      position: relative;
+    }
+    nav a::before {
+      content: ""; position: absolute; bottom: 0px; 
+      left: 50%; transform: translateX(-50%); width: 0; height: 2px; 
+      background-color: var(--accent-blue); border-radius: 1px; 
+      transition: width var(--transition-med) cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    nav a:hover, nav a.active { color: var(--text-light); transform: translateY(-1px); }
+    nav a:hover::before, nav a.active::before { width: 65%; } 
+    nav a.login-btn {
+      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--highlight-glow) 100%);
+      color: var(--primary-blue); padding: 10px 22px; 
+      border-radius: var(--border-radius-pill); margin-left: 12px; 
+      font-weight: 600; box-shadow: var(--shadow-sm);
+    }
+    nav a.login-btn:hover {
+      background: linear-gradient(135deg, var(--highlight-glow) 0%, var(--accent-blue) 100%);
+      box-shadow: var(--shadow-md); 
+    }
+    nav a.login-btn::before { display: none; }
+    /* --- End Header & Navigation --- */
+
+    /* Courses Page Specific Hero */
+    .page-hero { 
+      background: linear-gradient(rgba(58, 95, 148, 0.75), rgba(92, 133, 203, 0.65)), url('https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZWR1Y2F0aW9ufGVufDB8fDB8fHww&auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
+      color: var(--text-light);
+      padding: 80px 0 70px; 
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(58, 95, 148, 0.15); 
+    }
+    .page-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .page-hero p.subtitle {
+      font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+      color: var(--text-light-secondary);
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* General Section Styling */
+    .section { padding: 70px 0; }
+    .section.bg-alt { background-color: var(--light-bg-alt); }
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4.5vw, 2.6rem);
+      color: var(--primary-blue);
+      text-align: center;
+      margin-bottom: 20px;
+      position: relative; display: block;     
+    }
+    .section-title::after {
+      content: ''; display: block; width: 60px; height: 3.5px;
+      background-color: var(--accent-blue); margin: 12px auto 0;
+      border-radius: 2px;
+    }
+    .section-subtitle {
+        font-size: 1.1rem; color: var(--text-dark-secondary);
+        text-align: center; max-width: 700px;
+        margin: -10px auto 50px auto; 
+    }
+
+    /* Course Listing Styling */
+    .course-filter-bar { 
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .filter-btn {
+        background-color: var(--light-bg-alt);
+        color: var(--secondary-blue);
+        border: 1px solid var(--secondary-blue);
+        padding: 10px 20px;
+        margin: 0 5px 10px;
+        border-radius: var(--border-radius-pill);
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition-fast);
+    }
+    .filter-btn:hover, .filter-btn.active {
+        background-color: var(--secondary-blue);
+        color: var(--text-light);
+        border-color: var(--secondary-blue);
+    }
+    
+    .courses-grid { 
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .course-card { 
+      background-color: var(--light-bg-alt);
+      border-radius: var(--border-radius-md);
+      box-shadow: var(--shadow-md);
+      overflow: hidden; text-align: left;
+      transition: transform var(--transition-med), box-shadow var(--transition-med);
+      display: flex; flex-direction: column;
+      border: 1px solid transparent; 
+    }
+    .course-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-xl);
+      border-color: rgba(128, 172, 248, 0.4);
+    }
+    .course-card-image-wrapper {
+        width: 100%; height: 200px; 
+        overflow: hidden; 
+    }
+    .course-card img { /* Base64 placeholders or actual images */
+      width: 100%; height: 100%;
+      object-fit: cover;
+      background-color: #e9ecef; /* Background for when image might be transparent or for placeholder */
+      transition: transform 0.4s ease;
+    }
+    .course-card:hover img { transform: scale(1.08); }
+    .course-card-content {
+      padding: 25px; flex-grow: 1;
+      display: flex; flex-direction: column;
+    }
+    .course-card h3 { 
+      font-family: var(--font-heading); font-size: 1.4rem;
+      color: var(--primary-blue); margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .course-card p.description {
+      font-size: 0.9rem; color: var(--text-dark-secondary);
+      line-height: 1.6; margin-bottom: 15px; flex-grow: 1; 
+    }
+     .course-card .course-meta { 
+        font-size: 0.85rem; color: var(--secondary-blue); margin-bottom: 15px;
+        display: flex; gap: 15px;
+    }
+    .course-card .course-meta span { display: inline-flex; align-items: center; }
+    .course-card .course-meta i { margin-right: 6px; color: var(--accent-blue); }
+    .btn-view-course { 
+        display: inline-block; align-self: flex-start; 
+        background: linear-gradient(135deg, var(--accent-blue) 0%, var(--secondary-blue) 100%);
+        color: var(--text-light); padding: 10px 22px; text-decoration: none;
+        border-radius: var(--border-radius-pill); font-size: 0.9rem; font-weight: 600;
+        transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+        box-shadow: 0 2px 6px rgba(92, 133, 203, 0.3);
+    }
+    .btn-view-course i { margin-left: 8px; }
+    .btn-view-course:hover {
+        background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--accent-blue) 100%);
+        transform: translateY(-2px); box-shadow: 0 4px 10px rgba(92, 133, 203, 0.4);
+    }
+
+    .cta-section-courses {
+      background-color: var(--primary-blue); 
+      color: var(--text-light); padding: 60px 0; text-align: center;
+      margin-top: 40px; 
+    }
+    .cta-section-courses h2 {
+      font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 15px;
+      color: var(--text-light);
+    }
+    .cta-section-courses p {
+        font-size: 1.1rem; color: var(--text-light-secondary); margin-bottom: 30px;
+        max-width: 600px; margin-left: auto; margin-right: auto;
+    }
+    .cta-section-courses .cta-button { /* Solid button styling for this section */
+        background: linear-gradient(135deg, var(--accent-blue) 0%, var(--highlight-glow) 100%);
+        color: var(--primary-blue); 
+        padding: 15px 35px; text-decoration: none; font-family: var(--font-body);
+        font-size: 1.05rem; font-weight: 600; border-radius: var(--border-radius-pill);
+        transition: var(--transition-fast); display: inline-flex; align-items: center;
+        box-shadow: 0 3px 10px rgba(128, 172, 248, 0.35);
+    }
+     .cta-section-courses .cta-button:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(128, 172, 248, 0.45); }
+    .cta-section-courses .cta-button i { margin-left: 10px; }
+     
+    .cta-section-courses .cta-button-outline { /* Specific Outline style for this dark BG section */
+        background: transparent;
+        color: var(--text-light); /* White text on dark blue bg */
+        border: 2px solid var(--text-light); /* White border */
+        box-shadow: none;
+        padding: 15px 35px; /* Ensure padding is consistent */
+    }
+    .cta-section-courses .cta-button-outline:hover {
+        background-color: rgba(255, 255, 255, 0.1); /* Subtle white overlay */
+        border-color: var(--highlight-glow); /* Glowing border on hover */
+        transform: translateY(-2px);
+    }
+
+
+    /* Animations Utility & Footer (Identical to other pages) */
+    .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+    .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+    .delay-100ms { animation-delay: 0.1s !important; }
+    .delay-200ms { animation-delay: 0.2s !important; }
+
+    footer { background-color: var(--primary-blue); color: var(--text-light-secondary); padding: 75px 0 25px 0; font-size: 0.92rem; position: relative; z-index: 0;} 
+    .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 50px; text-align: left; }
+    .footer-column h4 { font-family: var(--font-heading); font-size: 1.35rem; color: var(--text-light); margin-bottom: 22px; position: relative; font-weight: 600; }
+    .footer-column h4::after { content: ''; display: block; width: 50px; height: 3px; background-color: var(--accent-blue); margin-top: 10px; }
+    .footer-column ul { list-style: none; }
+    .footer-column ul li { margin-bottom: 12px; }
+    .footer-column ul li a { color: var(--text-light-secondary); text-decoration: none; transition: color var(--transition-fast), padding-left var(--transition-fast); }
+    .footer-column ul li a:hover { color: var(--highlight-glow); padding-left: 7px; } 
+    .footer-column p { margin-bottom: 12px; line-height: 1.65; }
+    .footer-column p i.fas { color: var(--accent-blue); margin-right: 10px; width: 20px; text-align: center; }
+    .social-icons { margin-top: 20px; }
+    .social-icons a { color: var(--text-light-secondary); font-size: 1.5rem; margin-right: 16px; transition: color var(--transition-fast), transform var(--transition-fast); }
+    .social-icons a:hover { color: var(--highlight-glow); transform: translateY(-3px) scale(1.1); } 
+    .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--secondary-blue); font-size: 0.88rem; color: #BDC8D8; }
+    .footer-bottom .fa-heart { color: var(--accent-blue); }
+
+    /* Responsive for courses page */
+    @media (max-width: 768px) {
+        .page-hero { padding: 60px 0 50px; }
+    }
+  </style>
+</head>
+<body>
+  <header id="mainHeader">
+    <div class="header-content">
+      <div class="logo">
+        <i class="fas fa-university logo-icon"></i>
+        <a href="/home">Edu<span>ra</span></a>
+      </div>
+      <nav>
+        <a href="/home">Home</a>
+        <a href="/about">About Us</a>
+        <a href="/courses" class="active">Courses</a>
+        <a href="/departments">Departments</a>
+        <a href="/placement">Placement</a>
+        <a href="/mou">MOU</a>
+        <a href="/contact">Contact</a>
+        <a href="/login" class="login-btn">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Explore Our Diverse Course Catalog</h1>
+      <p class="subtitle">Unlock your potential with Edura's comprehensive range of programs, designed for academic excellence and career success.</p>
+    </div>
+  </section>
+
+  <main>
+    <section id="course-listing" class="section">
+      <div class="container">
+        <h2 class="section-title animate-on-scroll">Our Programs</h2>
+        <p class="section-subtitle animate-on-scroll">Find the perfect course to match your aspirations and skill level, from foundational certificates to advanced degrees.</p>
+
+        <div class="course-filter-bar animate-on-scroll">
+            <button class="filter-btn active">All Categories</button>
+            <button class="filter-btn">Undergraduate</button>
+            <button class="filter-btn">Postgraduate</button>
+            <button class="filter-btn">Diplomas</button>
+            <button class="filter-btn">Certificates</button>
+        </div>
+
+        <div class="courses-grid">
+          <article class="course-card animate-on-scroll">
+            <div class="course-card-image-wrapper">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAwAB/9+A4f0AAAAASUVORK5CYII=" alt="Bachelor of Computer Science">
+            </div>
+            <div class="course-card-content">
+              <h3>Bachelor of Computer Science</h3>
+              <div class="course-meta">
+                <span><i class="fas fa-user-graduate"></i> Undergraduate</span>
+                <span><i class="far fa-clock"></i> 4 Years</span>
+              </div>
+              <p class="description">A comprehensive program covering core programming, data structures, algorithms, AI fundamentals, and software engineering principles.</p>
+              <a href="/courses/bsc-cs" class="btn-view-course">View Details <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <article class="course-card animate-on-scroll delay-100ms">
+            <div class="course-card-image-wrapper">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAwAB/9+A4f0AAAAASUVORK5CYII=" alt="Master of Business Administration (MBA)">
+            </div>
+            <div class="course-card-content">
+              <h3>Master of Business Administration (MBA)</h3>
+              <div class="course-meta">
+                <span><i class="fas fa-user-tie"></i> Postgraduate</span>
+                <span><i class="far fa-clock"></i> 2 Years</span>
+              </div>
+              <p class="description">Develop strategic leadership with specializations in Marketing, Finance, Human Resources, and International Business.</p>
+              <a href="/courses/mba" class="btn-view-course">View Details <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <article class="course-card animate-on-scroll delay-200ms">
+            <div class="course-card-image-wrapper">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAwAB/9+A4f0AAAAASUVORK5CYII=" alt="Diploma in Mechanical Engineering">
+            </div>
+            <div class="course-card-content">
+              <h3>Diploma in Mechanical Engineering</h3>
+              <div class="course-meta">
+                <span><i class="fas fa-cogs"></i> Diploma</span>
+                <span><i class="far fa-clock"></i> 3 Years</span>
+              </div>
+              <p class="description">Hands-on training in mechanical design, manufacturing processes, thermodynamics, and CAD software proficiency.</p>
+              <a href="/courses/diploma-mech" class="btn-view-course">View Details <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <article class="course-card animate-on-scroll">
+            <div class="course-card-image-wrapper">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAwAB/9+A4f0AAAAASUVORK5CYII=" alt="Certificate in Digital Marketing">
+            </div>
+            <div class="course-card-content">
+              <h3>Certificate in Digital Marketing</h3>
+               <div class="course-meta">
+                <span><i class="fas fa-certificate"></i> Certificate</span>
+                <span><i class="far fa-clock"></i> 6 Months</span>
+              </div>
+              <p class="description">Master SEO, content creation, social media strategy, PPC advertising, and analytics for online success.</p>
+              <a href="/courses/cert-digital-marketing" class="btn-view-course">View Details <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <article class="course-card animate-on-scroll delay-100ms">
+            <div class="course-card-image-wrapper">
+                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAwAB/9+A4f0AAAAASUVORK5CYII=" alt="Advanced Electronics Engineering">
+            </div>
+            <div class="course-card-content">
+              <h3>Advanced Electronics Engineering</h3>
+              <div class="course-meta">
+                <span><i class="fas fa-microchip"></i> Undergraduate</span>
+                <span><i class="far fa-clock"></i> 4 Years</span>
+              </div>
+              <p class="description">Deep dive into communication systems, embedded devices, VLSI design, and advanced circuit analysis.</p>
+              <a href="/courses/bsc-electronics" class="btn-view-course">View Details <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <article class="course-card animate-on-scroll delay-200ms">
+            <div class="course-card-image-wrapper">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAwAB/9+A4f0AAAAASUVORK5CYII=" alt="B.Sc. in Psychology">
+            </div>
+            <div class="course-card-content">
+              <h3>B.Sc. in Psychology</h3>
+              <div class="course-meta">
+                <span><i class="fas fa-brain"></i> Undergraduate</span>
+                <span><i class="far fa-clock"></i> 3 Years</span>
+              </div>
+              <p class="description">Explore the fascinating world of human behavior, cognitive processes, and mental health studies.</p>
+              <a href="/courses/bsc-psychology" class="btn-view-course">View Details <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section-courses animate-on-scroll">
+        <div class="container">
+            <h2>Can't Find What You're Looking For?</h2>
+            <p>Our advisors are here to help you find the perfect program or discuss custom training solutions for your organization.</p>
+            <a href="/contact" class="cta-button cta-button-outline">Speak to an Advisor <i class="fas fa-comments"></i></a>
+        </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h4><i class="fas fa-school"></i> Edura Institute</h4>
+          <p>Dedicated to fostering innovation, critical thinking, and leadership through world-class education and research.
+          </p>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Navigate Edura</h4>
+          <ul>
+            <li><a href="/about">Our Mission & Vision</a></li>
+            <li><a href="/admission">Admissions Guide</a></li>
+            <li><a href="/courses">All Programs</a></li>
+            <li><a href="/departments">Academic Departments</a></li>
+            <li><a href="/campus-life">Campus Life</a></li>
+            <li><a href="/research">Research Initiatives</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Student Resources</h4>
+          <ul>
+            <li><a href="/student-portal">My Edura Portal</a></li>
+            <li><a href="/placement">Career Development</a></li>
+            <li><a href="/library">Online Library</a></li>
+            <li><a href="/mou">Global Partnerships</a></li>
+            <li><a href="/alumni">Alumni Network</a></li>
+            <li><a href="/support">Academic Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Connect With Us</h4>
+          <p><i class="fas fa-map-marked-alt"></i> 1 University Plaza, Edura City, EC 12345</p>
+          <p><i class="fas fa-phone-volume"></i> +1 (555) EDURA-01</p>
+          <p><i class="fas fa-envelope-open-text"></i> contact@edura.university</p>
+          <p><i class="fas fa-globe"></i> www.edura.university</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <script>document.write(new Date().getFullYear())</script> Edura University. All Rights Reserved. Built with <i class="fas fa-heart"></i> by Innovators.</p>
+    </div>
+  </footer>
+
+  <script>
+    const mainHeaderCourses = document.getElementById("mainHeader");
+    if(mainHeaderCourses){
+        window.addEventListener("scroll", function() {
+        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            mainHeaderCourses.classList.add("scrolled");
+        } else {
+            mainHeaderCourses.classList.remove("scrolled");
+        }
+        });
+    }
+
+    const navLinksCourses = document.querySelectorAll("nav a:not(.login-btn)");
+    const currentPathCourses = window.location.pathname;
+    navLinksCourses.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === currentPathCourses || link.getAttribute('href') === currentPathCourses.replace('.html', '')) {
+        link.classList.add('active');
+      }
+    });
+
+    const animatedElementsCourses = document.querySelectorAll('.animate-on-scroll');
+    const observerOptionsCourses = { root: null, rootMargin: '0px', threshold: 0.1 };
+    const observerCourses = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, observerOptionsCourses);
+    animatedElementsCourses.forEach(el => { observerCourses.observe(el); });
+
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+        });
+    });
+  </script>
+</body>
+</html>

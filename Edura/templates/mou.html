@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Collaborations (MOUs) - Edura</title>
+  <!-- Reusing fonts and Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      /* Palette based on #80acf8 (from previous successful implementation) */
+      --primary-blue: #3A5F94;
+      --secondary-blue: #5C85CB;
+      --accent-blue: #80acf8;
+      --highlight-glow: #A5C8FA;
+      --light-blue-bg-tint: #EBF1FF;
+
+      --light-bg: var(--light-blue-bg-tint);
+      --light-bg-alt: #FFFFFF;
+
+      --text-dark: #1A202C;
+      --text-dark-secondary: #4A5568;
+      --text-light: #FFFFFF;
+      --text-light-secondary: #F0F8FF;
+
+      --font-heading: 'Bricolage Grotesque', 'Arial Narrow Bold', sans-serif;
+      --font-body: 'Inter', sans-serif;
+
+      --shadow-sm: 0 2px 6px rgba(58, 95, 148, 0.08);
+      --shadow-md: 0 4px 12px rgba(58, 95, 148, 0.12);
+      --shadow-lg: 0 10px 20px rgba(58, 95, 148, 0.15);
+      --shadow-xl: 0 15px 30px rgba(58, 95, 148, 0.18);
+
+      --border-radius-sm: 8px;
+      --border-radius-md: 16px;
+      --border-radius-lg: 24px;
+      --border-radius-pill: 50px;
+
+      --transition-fast: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-med: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 25px; } 
+
+    /* --- Header & Navigation (Identical to previous pages) --- */
+    header {
+      background-color: var(--primary-blue); 
+      color: var(--text-light); padding: 16px 0;
+      position: sticky; top: 0; z-index: 1000; 
+      box-shadow: 0 2px 8px rgba(58, 95, 148, 0.2); 
+      transition: background-color var(--transition-med), box-shadow var(--transition-med);
+    }
+    header.scrolled {
+      background-color: rgba(58, 95, 148, 0.85); 
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);        
+      box-shadow: 0 4px 12px rgba(58, 95, 148, 0.25);
+    }
+    .header-content {
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1360px; margin: 0 auto; padding: 0 25px;
+    }
+    .logo { display: flex; align-items: center; }
+    .logo-icon {
+      font-size: 2rem; color: var(--accent-blue); margin-right: 12px; 
+      transition: transform var(--transition-fast) ease-in-out;
+    }
+    .logo:hover .logo-icon { transform: rotate(-10deg) scale(1.15); }
+    .logo a {
+      font-family: var(--font-heading); font-size: 2.4rem; font-weight: 700;
+      color: var(--text-light); text-decoration: none; letter-spacing: -0.5px;
+    }
+    .logo a span {
+      background: linear-gradient(60deg, var(--text-light) 15%, var(--accent-blue) 85%);
+      -webkit-background-clip: text; -moz-background-clip: text; background-clip: text;
+      color: transparent; font-weight: 700;
+    } 
+    nav { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
+    nav a {
+      color: var(--text-light-secondary); text-decoration: none;
+      padding: 10px 14px; margin: 0 4px;    
+      font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; border-radius: var(--border-radius-sm);
+      transition: color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+      position: relative;
+    }
+    nav a::before {
+      content: ""; position: absolute; bottom: 0px; 
+      left: 50%; transform: translateX(-50%); width: 0; height: 2px; 
+      background-color: var(--accent-blue); border-radius: 1px; 
+      transition: width var(--transition-med) cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    nav a:hover, nav a.active { color: var(--text-light); transform: translateY(-1px); }
+    nav a:hover::before, nav a.active::before { width: 65%; } 
+    nav a.login-btn {
+      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--highlight-glow) 100%);
+      color: var(--primary-blue); padding: 10px 22px; 
+      border-radius: var(--border-radius-pill); margin-left: 12px; 
+      font-weight: 600; box-shadow: var(--shadow-sm);
+    }
+    nav a.login-btn:hover {
+      background: linear-gradient(135deg, var(--highlight-glow) 0%, var(--accent-blue) 100%);
+      box-shadow: var(--shadow-md); 
+    }
+    nav a.login-btn::before { display: none; }
+    /* --- End Header & Navigation --- */
+
+    /* MOU Page Specific Hero */
+    .page-hero { 
+      background: linear-gradient(rgba(58, 95, 148, 0.8), rgba(92, 133, 203, 0.7)), url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvbGxhYm9yYXRpb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
+      color: var(--text-light);
+      padding: 80px 0 70px; 
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(58, 95, 148, 0.15); 
+    }
+    .page-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 700; margin-bottom: 10px;
+    }
+    .page-hero p.subtitle {
+      font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+      color: var(--text-light-secondary); max-width: 700px; margin: 0 auto;
+    }
+
+    /* General Section Styling */
+    .section { padding: 70px 0; }
+    .section.bg-alt { background-color: var(--light-bg-alt); }
+    .section-title {
+      font-family: var(--font-heading); font-size: clamp(2rem, 4.5vw, 2.6rem);
+      color: var(--primary-blue); text-align: center;
+      margin-bottom: 20px; position: relative; display: block;     
+    }
+    .section-title::after {
+      content: ''; display: block; width: 60px; height: 3.5px;
+      background-color: var(--accent-blue); margin: 12px auto 0;
+      border-radius: 2px;
+    }
+    .section-subtitle {
+        font-size: 1.1rem; color: var(--text-dark-secondary); text-align: center; 
+        max-width: 750px; margin: -10px auto 50px auto; 
+    }
+    .content-block {
+      margin-bottom: 50px; text-align: left; 
+    }
+    .content-block p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 15px; }
+    .content-block ul { /* For Benefits section */
+        list-style: none; padding-left: 0;
+        columns: 2; /* Create two columns for benefits list */
+        gap: 30px;
+    }
+    .content-block ul li {
+        font-size: 1rem; color: var(--text-dark-secondary); padding-left: 28px;
+        position: relative; margin-bottom: 10px; break-inside: avoid;
+    }
+    .content-block ul li::before {
+        content: '\f00c'; /* Font Awesome check */
+        font-family: "Font Awesome 6 Free"; font-weight: 900;
+        color: var(--accent-blue); position: absolute; left: 0; top: 3px;
+    }
+    @media (max-width: 600px) {
+        .content-block ul { columns: 1; } /* Single column on small screens */
+    }
+
+
+    /* MOU Card Styling */
+    .mou-grid {
+        display: grid;
+        grid-template-columns: 1fr; /* Each MOU card takes full width */
+        gap: 30px;
+    }
+    .mou-card {
+        background-color: var(--light-bg-alt);
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-md);
+        display: flex; /* For logo and content side-by-side */
+        align-items: flex-start; /* Align items at the top */
+        padding: 25px;
+        transition: var(--transition-med);
+        border-left: 5px solid transparent;
+    }
+    .mou-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+        border-left-color: var(--accent-blue);
+    }
+    .mou-logo-container {
+        flex-shrink: 0;
+        width: 100px; /* Adjust as needed */
+        height: 100px;
+        margin-right: 25px;
+        background-color: #e9ecef; /* Placeholder background */
+        border-radius: var(--border-radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+    .mou-logo-container img { /* For actual partner logos */
+        max-width: 80%;
+        max-height: 80%;
+        object-fit: contain;
+    }
+     .mou-logo-container .logo-placeholder-text { /* If no image, use text */
+        font-size: 0.9rem;
+        color: var(--text-dark-secondary);
+        font-weight: 500;
+        text-align: center;
+    }
+    .mou-content {
+        flex-grow: 1;
+    }
+    .mou-content h3 {
+        font-family: var(--font-heading);
+        font-size: 1.4rem;
+        color: var(--primary-blue);
+        margin: 0 0 8px 0;
+    }
+    .mou-content .meta-info {
+        font-size: 0.9rem;
+        color: var(--secondary-blue);
+        margin-bottom: 12px;
+    }
+    .mou-content .meta-info strong {
+        color: var(--text-dark);
+    }
+    .mou-content p.focus-areas {
+        font-size: 0.95rem;
+        color: var(--text-dark-secondary);
+        margin-bottom: 0;
+    }
+    @media (max-width: 600px) {
+        .mou-card { flex-direction: column; align-items: center; text-align:center;}
+        .mou-logo-container { margin-right: 0; margin-bottom: 20px; }
+        .mou-content h3 { text-align: center; }
+        .mou-content .meta-info { text-align: center; justify-content: center; }
+    }
+    
+
+    /* General CTA Buttons (can be reused) */
+    .cta-button { 
+      background: var(--light-bg-alt); color: var(--primary-blue);    
+      padding: 15px 35px; text-decoration: none; font-family: var(--font-body); font-size: 1.05rem;
+      font-weight: 600; border-radius: var(--border-radius-pill);
+      border: 1px solid rgba(58, 95, 148, 0.25); 
+      transition: var(--transition-fast); display: inline-flex; align-items: center;
+      box-shadow: var(--shadow-sm); 
+    }
+    .cta-button:hover {
+      background-color: var(--light-blue-bg-tint); border-color: rgba(58, 95, 148, 0.4);
+      transform: translateY(-3px) scale(1.02); box-shadow: var(--shadow-lg); 
+    }
+    .cta-button i { margin-left: 8px; }
+    
+    /* Footer & Animations (Identical to other pages) */
+    .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+    .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+    .delay-100ms { animation-delay: 0.1s !important; }
+    .delay-200ms { animation-delay: 0.2s !important; }
+
+    footer { background-color: var(--primary-blue); color: var(--text-light-secondary); padding: 75px 0 25px 0; font-size: 0.92rem; position: relative; z-index: 0;} 
+    .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 50px; text-align: left; }
+    .footer-column h4 { font-family: var(--font-heading); font-size: 1.35rem; color: var(--text-light); margin-bottom: 22px; position: relative; font-weight: 600; }
+    .footer-column h4::after { content: ''; display: block; width: 50px; height: 3px; background-color: var(--accent-blue); margin-top: 10px; }
+    .footer-column ul { list-style: none; }
+    .footer-column ul li { margin-bottom: 12px; }
+    .footer-column ul li a { color: var(--text-light-secondary); text-decoration: none; transition: color var(--transition-fast), padding-left var(--transition-fast); }
+    .footer-column ul li a:hover { color: var(--highlight-glow); padding-left: 7px; } 
+    .footer-column p { margin-bottom: 12px; line-height: 1.65; }
+    .footer-column p i.fas { color: var(--accent-blue); margin-right: 10px; width: 20px; text-align: center; }
+    .social-icons { margin-top: 20px; }
+    .social-icons a { color: var(--text-light-secondary); font-size: 1.5rem; margin-right: 16px; transition: color var(--transition-fast), transform var(--transition-fast); }
+    .social-icons a:hover { color: var(--highlight-glow); transform: translateY(-3px) scale(1.1); } 
+    .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--secondary-blue); font-size: 0.88rem; color: #BDC8D8; }
+    .footer-bottom .fa-heart { color: var(--accent-blue); }
+
+  </style>
+</head>
+<body>
+  <!-- Header from other pages -->
+  <header id="mainHeader">
+    <div class="header-content">
+      <div class="logo">
+        <i class="fas fa-university logo-icon"></i>
+        <a href="/home">Edu<span>ra</span></a>
+      </div>
+      <nav>
+        <a href="/home">Home</a>
+        <a href="/about">About Us</a>
+        <a href="/courses">Courses</a>
+        <a href="/departments">Departments</a>
+        <a href="/placement">Placement Cell</a>
+        <a href="/mou" class="active">MOU</a> <!-- Active link -->
+        <a href="/contact">Contact</a>
+        <a href="/login" class="login-btn">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MOU Page Hero Section -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Our Global & Industry Collaborations</h1>
+      <p class="subtitle">Building bridges for academic excellence, research innovation, and enhanced student opportunities through strategic partnerships.</p>
+    </div>
+  </section>
+
+  <main>
+    <section id="mou-intro" class="section">
+        <div class="container content-block animate-on-scroll" style="text-align: center; max-width:800px;">
+            <h2 class="section-title">Fostering Synergy Through MOUs</h2>
+            <p class="section-subtitle" style="margin-top:10px;">Memorandums of Understanding (MOUs) are pivotal to Edura's commitment to providing a world-class, globally relevant education. These collaborations with esteemed academic institutions and leading industry players enrich our ecosystem.</p>
+        </div>
+    </section>
+
+    <section id="mou-benefits" class="section bg-alt">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Benefits of Our Partnerships</h2>
+            <div class="content-block animate-on-scroll">
+                <p>Our MOUs are designed to create a multitude of advantages for our students, faculty, and the wider Edura community:</p>
+                <ul>
+                    <li>Student Exchange Programs</li>
+                    <li>Joint Research Initiatives</li>
+                    <li>Faculty Development & Exchange</li>
+                    <li>Access to Specialized Resources</li>
+                    <li>Internship & Placement Opportunities</li>
+                    <li>Industry-Relevant Curriculum Input</li>
+                    <li>Dual Degree/Certification Pathways</li>
+                    <li>Cultural & Academic Immersion</li>
+                    <li>Enhanced Global Networking</li>
+                    <li>Workshops & Joint Seminars</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="active-mous" class="section">
+      <div class="container">
+        <h2 class="section-title animate-on-scroll">Our Esteemed Partners</h2>
+        <p class="section-subtitle animate-on-scroll">A look at some of our active Memorandums of Understanding.</p>
+        <div class="mou-grid">
+          <!-- MOU Card 1 -->
+          <article class="mou-card animate-on-scroll">
+            <div class="mou-logo-container">
+              <!-- <img src="path/to/techverse-logo.png" alt="TechVerse Solutions Logo"> -->
+              <span class="logo-placeholder-text">TechVerse</span>
+            </div>
+            <div class="mou-content">
+              <h3>TechVerse Solutions International</h3>
+              <p class="meta-info"><strong>Type:</strong> Industry Partner | <strong>Active Since:</strong> January 15, 2024</p>
+              <p class="focus-areas"><strong>Focus:</strong> Collaborative research in AI and Machine Learning, internship programs for Computer Science students, joint workshops on emerging technologies.</p>
+            </div>
+          </article>
+
+          <!-- MOU Card 2 -->
+          <article class="mou-card animate-on-scroll delay-100ms">
+            <div class="mou-logo-container">
+               <!-- <img src="path/to/greenenergy-logo.png" alt="GreenEnergy Labs Logo"> -->
+               <span class="logo-placeholder-text">GreenLabs</span>
+            </div>
+            <div class="mou-content">
+              <h3>GreenEnergy Labs Worldwide</h3>
+              <p class="meta-info"><strong>Type:</strong> Research Institute | <strong>Active Since:</strong> October 3, 2023</p>
+              <p class="focus-areas"><strong>Focus:</strong> Joint projects on renewable energy solutions, faculty exchange for sustainability studies, access to advanced lab facilities for Electrical and Environmental Engineering students.</p>
+            </div>
+          </article>
+
+          <!-- MOU Card 3 -->
+          <article class="mou-card animate-on-scroll delay-200ms">
+            <div class="mou-logo-container">
+              <!-- <img src="path/to/globaluni-logo.png" alt="Global University Network Logo"> -->
+              <span class="logo-placeholder-text">Global Uni.</span>
+            </div>
+            <div class="mou-content">
+              <h3>Global University of Innovation</h3>
+              <p class="meta-info"><strong>Type:</strong> Academic Institution | <strong>Active Since:</strong> August 20, 2023</p>
+              <p class="focus-areas"><strong>Focus:</strong> Student and faculty exchange programs, joint degree offerings in Business Analytics, collaborative research grants, and shared online learning resources.</p>
+            </div>
+          </article>
+
+           <!-- MOU Card 4 -->
+          <article class="mou-card animate-on-scroll">
+            <div class="mou-logo-container">
+              <!-- <img src="path/to/healthcare-logo.png" alt="HealthcareTech India Logo"> -->
+              <span class="logo-placeholder-text">HealthTech</span>
+            </div>
+            <div class="mou-content">
+              <h3>HealthcareTech India Consortium</h3>
+              <p class="meta-info"><strong>Type:</strong> Industry Consortium | <strong>Active Since:</strong> July 18, 2023</p>
+              <p class="focus-areas"><strong>Focus:</strong> Innovation workshops for BioTech and Health Informatics students, guest lectures from industry experts, and co-development of healthcare technology modules.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+     <section id="partner-with-us" class="section bg-alt animate-on-scroll">
+        <div class="container" style="text-align:center;">
+            <h2 class="section-title">Partner with Edura</h2>
+            <p class="section-subtitle" style="margin-bottom: 30px;">We are always open to forging new alliances that enhance educational value and create mutual growth opportunities. If your institution or organization is interested in collaborating, we would love to hear from you.</p>
+            <a href="/contact?subject=MOUPartnership" class="cta-button">Become a Partner <i class="fas fa-handshake"></i></a>
+        </div>
+    </section>
+
+
+  </main>
+
+  <!-- Footer from other pages -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h4><i class="fas fa-school"></i> Edura Institute</h4>
+          <p>Dedicated to fostering innovation, critical thinking, and leadership through world-class education and research.
+          </p>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Navigate Edura</h4>
+          <ul>
+            <li><a href="/about">Our Mission & Vision</a></li>
+            <li><a href="/admission">Admissions Guide</a></li>
+            <li><a href="/courses">All Programs</a></li>
+            <li><a href="/departments">Academic Departments</a></li>
+            <li><a href="/campus-life">Campus Life</a></li>
+            <li><a href="/research">Research Initiatives</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Student Resources</h4>
+          <ul>
+            <li><a href="/student-portal">My Edura Portal</a></li>
+            <li><a href="/placement">Career Development</a></li>
+            <li><a href="/library">Online Library</a></li>
+            <li><a href="/mou">Global Partnerships</a></li>
+            <li><a href="/alumni">Alumni Network</a></li>
+            <li><a href="/support">Academic Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Connect With Us</h4>
+          <p><i class="fas fa-map-marked-alt"></i> 1 University Plaza, Edura City, EC 12345</p>
+          <p><i class="fas fa-phone-volume"></i> +1 (555) EDURA-01</p>
+          <p><i class="fas fa-envelope-open-text"></i> contact@edura.university</p>
+          <p><i class="fas fa-globe"></i> www.edura.university</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <script>document.write(new Date().getFullYear())</script> Edura University. All Rights Reserved. Built with <i class="fas fa-heart"></i> by Innovators.</p>
+    </div>
+  </footer>
+
+  <script>
+    // JS for active nav link and animations (reused)
+    const mainHeaderMOU = document.getElementById("mainHeader");
+    if(mainHeaderMOU){
+        window.addEventListener("scroll", function() {
+        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            mainHeaderMOU.classList.add("scrolled");
+        } else {
+            mainHeaderMOU.classList.remove("scrolled");
+        }
+        });
+    }
+
+    const navLinksMOU = document.querySelectorAll("nav a:not(.login-btn)");
+    const currentPathMOU = window.location.pathname;
+    navLinksMOU.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === currentPathMOU || link.getAttribute('href') === currentPathMOU.replace('.html', '')) {
+        link.classList.add('active');
+      }
+    });
+
+    const animatedElementsMOU = document.querySelectorAll('.animate-on-scroll');
+    const observerOptionsMOU = { root: null, rootMargin: '0px', threshold: 0.1 };
+    const observerMOU = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, observerOptionsMOU);
+    animatedElementsMOU.forEach(el => { observerMOU.observe(el); });
+  </script>
+</body>
+</html>

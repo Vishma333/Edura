@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edura - Home | Elevating Your Educational Journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      /* Palette based on #80acf8 */
+      --primary-blue: #3A5F94;
+      --secondary-blue: #5C85CB;
+      --accent-blue: #80acf8;
+      --highlight-glow: #A5C8FA;
+      --light-blue-bg-tint: #EBF1FF;
+
+      --light-bg: var(--light-blue-bg-tint);
+      --light-bg-alt: #FFFFFF;
+
+      --text-dark: #1A202C;
+      --text-dark-secondary: #4A5568;
+      --text-light: #FFFFFF;
+      --text-light-secondary: #F0F8FF;
+
+      --font-heading: 'Bricolage Grotesque', 'Arial Narrow Bold', sans-serif;
+      --font-body: 'Inter', sans-serif;
+
+      --shadow-sm: 0 2px 6px rgba(58, 95, 148, 0.08);
+      --shadow-md: 0 4px 12px rgba(58, 95, 148, 0.12);
+      --shadow-lg: 0 10px 20px rgba(58, 95, 148, 0.15);
+      --shadow-xl: 0 15px 30px rgba(58, 95, 148, 0.18);
+
+      --border-radius-sm: 8px;
+      --border-radius-md: 16px;
+      --border-radius-lg: 24px;
+      --border-radius-pill: 50px;
+
+      --transition-fast: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-med: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 25px; }
+
+    /* Header & Navigation */
+    header {
+      background-color: var(--primary-blue); 
+      color: var(--text-light);
+      padding: 16px 0;
+      position: sticky; top: 0; z-index: 1000; 
+      box-shadow: 0 2px 8px rgba(58, 95, 148, 0.2); 
+      transition: background-color var(--transition-med), box-shadow var(--transition-med);
+    }
+    header.scrolled {
+      background-color: rgba(58, 95, 148, 0.85); 
+      -webkit-backdrop-filter: blur(10px); 
+      backdrop-filter: blur(10px);        
+      box-shadow: 0 4px 12px rgba(58, 95, 148, 0.25);
+    }
+
+    .header-content {
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1360px; margin: 0 auto; padding: 0 25px;
+    }
+
+    .logo { display: flex; align-items: center; }
+    .logo-icon {
+      font-size: 2rem; color: var(--accent-blue); margin-right: 12px; 
+      transition: transform var(--transition-fast) ease-in-out;
+    }
+    .logo:hover .logo-icon { transform: rotate(-10deg) scale(1.15); }
+    .logo a {
+      font-family: var(--font-heading); font-size: 2.4rem; font-weight: 700;
+      color: var(--text-light); text-decoration: none; letter-spacing: -0.5px;
+    }
+    .logo a span { /* MODIFIED: Text gradient for logo's 'ra' part */
+      background: linear-gradient(60deg, var(--text-light) 15%, var(--accent-blue) 85%);
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 700; /* Keeping bold for 'ra' if desired */
+      /* display: inline-block; If rendering issues, uncomment this */
+    } 
+
+    nav { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
+    nav a {
+      color: var(--text-light-secondary); text-decoration: none;
+      padding: 10px 14px; 
+      margin: 0 4px;    
+      font-family: var(--font-body);
+      font-size: 0.9rem; font-weight: 500; border-radius: var(--border-radius-sm);
+      transition: color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+      position: relative;
+    }
+    nav a::before {
+      content: ""; position: absolute; bottom: 0px; 
+      left: 50%; transform: translateX(-50%); width: 0;
+      height: 2px; 
+      background-color: var(--accent-blue); border-radius: 1px; 
+      transition: width var(--transition-med) cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    nav a:hover, nav a.active { color: var(--text-light); transform: translateY(-1px); }
+    nav a:hover::before, nav a.active::before { width: 65%; } 
+
+    nav a.login-btn {
+      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--highlight-glow) 100%);
+      color: var(--primary-blue); 
+      padding: 10px 22px; 
+      border-radius: var(--border-radius-pill);
+      margin-left: 12px; 
+      font-weight: 600; box-shadow: var(--shadow-sm);
+    }
+    nav a.login-btn:hover {
+      background: linear-gradient(135deg, var(--highlight-glow) 0%, var(--accent-blue) 100%);
+      box-shadow: var(--shadow-md); 
+    }
+    nav a.login-btn::before { display: none; }
+
+    .hero {
+      color: var(--text-light);
+      padding: 100px 0; 
+      text-align: center;
+      min-height: 75vh; 
+      display: flex; align-items: center; justify-content: center;
+      position: relative; 
+      overflow: hidden; 
+      background: var(--primary-blue); 
+      box-shadow: 0 10px 20px -5px rgba(58, 95, 148, 0.25); 
+      z-index: 5; 
+    }
+    .hero::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(45deg, var(--primary-blue) 0%, var(--secondary-blue) 60%, var(--accent-blue) 100%); 
+      background-size: 250% 250%;
+      animation: gradientHeroBG 30s ease infinite alternate; z-index: -2; 
+    }
+    .hero::after { 
+        content: ""; position: absolute; top:0; left:0; right:0; bottom:0;
+        background-image:
+            linear-gradient(45deg, rgba(92, 133, 203, 0.1) 25%, transparent 25%), 
+            linear-gradient(-45deg, rgba(92, 133, 203, 0.1) 25%, transparent 25%),
+            linear-gradient(45deg, transparent 75%, rgba(92, 133, 203, 0.1) 75%),
+            linear-gradient(-45deg, transparent 75%, rgba(92, 133, 203, 0.1) 75%);
+        background-size: 60px 60px;
+        background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
+        z-index: -1; 
+        opacity: 0.2;
+    }
+    @keyframes gradientHeroBG {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    .hero-content {
+      max-width: 880px; position: relative; z-index: 1; 
+      animation: heroContentFadeInUp 1.2s cubic-bezier(0.23, 1, 0.32, 1) 0.2s forwards;
+      opacity:0; transform: translateY(30px);
+    }
+    @keyframes heroContentFadeInUp { to { opacity: 1; transform: translateY(0); } }
+    .hero h1 {
+      font-family: var(--font-heading); font-size: clamp(2.8rem, 6vw, 4.5rem); font-weight: 700;
+      margin-bottom: 25px; line-height: 1.1; letter-spacing: -1.5px; color: var(--text-light);
+    }
+    .hero h1 .highlight { /* MODIFIED: Text gradient for hero H1 "Edura" span */
+      background: linear-gradient(90deg, var(--text-light) 20%, var(--accent-blue) 100%); /* White to #80acf8 */
+      -webkit-background-clip: text;
+      -moz-background-clip: text; 
+      background-clip: text;
+      color: transparent;
+      /* display: inline-block; Might add if needed, typically works */
+    } 
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--text-light-secondary); margin-bottom: 45px;
+      font-weight: 400; max-width: 700px; margin-left: auto; margin-right: auto;
+      animation: heroContentFadeInUp 1.2s cubic-bezier(0.23, 1, 0.32, 1) 0.5s forwards;
+      opacity:0; transform: translateY(20px);
+    }
+    .cta-button-group { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    
+    .cta-button { 
+      background: var(--light-bg-alt); color: var(--primary-blue);    
+      padding: 16px 38px; text-decoration: none; font-family: var(--font-body); font-size: 1.1rem;
+      font-weight: 600; border-radius: var(--border-radius-pill);
+      border: 1px solid rgba(58, 95, 148, 0.25); 
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
+      display: inline-flex; align-items: center; box-shadow: var(--shadow-sm); 
+      position: relative; overflow: hidden; 
+    }
+    .cta-button::before { display: none; }
+    .cta-button:hover {
+      background-color: var(--light-blue-bg-tint); border-color: rgba(58, 95, 148, 0.4);
+      transform: translateY(-3px) scale(1.02); box-shadow: var(--shadow-lg); 
+    }
+    .cta-button:hover i { transform: translateX(5px); }
+
+    .cta-button-outline { 
+      background: transparent; color: var(--text-light); border: 2px solid var(--text-light); 
+      box-shadow: none; padding: 16px 38px; font-family: var(--font-body); 
+      font-size: 1.1rem; font-weight: 600; border-radius: var(--border-radius-pill); 
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
+      display: inline-flex; align-items: center;
+    }
+    .cta-button-outline::before { display: none; }
+    .cta-button-outline:hover {
+      background: rgba(255, 255, 255, 0.1); color: var(--text-light);
+      border-color: var(--highlight-glow); transform: translateY(-2px); 
+      box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1); 
+    }
+    .cta-button-outline i { margin-left: 10px; transition: transform 0.3s ease; } 
+    .cta-button-outline:hover i { transform: translateX(5px); }
+
+    .section { 
+      padding: 90px 0; text-align: center; overflow-x: hidden; 
+      position: relative; 
+      box-shadow: 0 6px 12px -4px rgba(58, 95, 148, 0.10); 
+      z-index: 1; 
+    }
+    main > .section:last-of-type { box-shadow: none; }
+
+    .section.bg-alt { background-color: var(--light-bg-alt); }
+    .section-title {
+      font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 2.8rem);
+      color: var(--primary-blue); margin-bottom: 20px;
+      position: relative; display: inline-block; font-weight: 700;
+    }
+    .section-title::after {
+      content: ''; display: block; width: 70px; height: 4px;
+      background: var(--accent-blue); margin: 18px auto 0; border-radius: 2px;
+    }
+    .section-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.15rem); color: var(--text-dark-secondary);
+      max-width: 750px; margin: 0 auto 60px auto; font-weight: 400;
+    }
+    .grid-container {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 30px; margin-top: 50px; text-align: left;
+    }
+    .item-card {
+      background-color: var(--light-bg-alt); padding: 30px; border-radius: var(--border-radius-md);
+      box-shadow: var(--shadow-md); 
+      transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-med);
+      border: 1px solid transparent; display: flex; flex-direction: column;
+      position: relative; 
+    }
+    .item-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); border-color: rgba(128, 172, 248, 0.4); } 
+    .item-card-title {
+      font-family: var(--font-heading); font-size: 1.6rem;
+      color: var(--primary-blue); margin-bottom: 12px; font-weight: 600;
+    }
+    .item-card-text { font-size: 0.95rem; color: var(--text-dark-secondary); line-height: 1.65; }
+
+    .feature-item-enhanced { 
+        text-align: center; padding-bottom: 40px; 
+    }
+    .feature-icon-wrapper {
+        background-color: rgba(128, 172, 248, 0.1); 
+        width: 90px; height: 90px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        margin: 0 auto 25px auto; 
+        transition: transform var(--transition-med) cubic-bezier(0.34, 1.56, 0.64, 1), background-color var(--transition-med), box-shadow var(--transition-med); 
+        box-shadow: 0 0 0 4px rgba(128, 172, 248,0); 
+    }
+    .feature-item-enhanced:hover .feature-icon-wrapper {
+        background-color: var(--accent-blue); transform: scale(1.12);
+        box-shadow: 0 0 0 8px rgba(128, 172, 248,0.3); 
+    }
+    .feature-item-enhanced .item-card-icon {
+        font-size: 2.6rem; color: var(--accent-blue); transition: color var(--transition-med);
+    }
+    .feature-item-enhanced:hover .item-card-icon { color: var(--text-light); } 
+    .feature-item-enhanced .item-card-title { text-align: center; } 
+    .feature-item-enhanced .item-card-text {
+        text-align: center; max-height: 70px; overflow: hidden;
+        transition: max-height 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.3s ease;
+    }
+    .feature-item-enhanced:hover .item-card-text {
+        max-height: 220px; color: var(--text-dark); 
+    }
+    .feature-item-enhanced::after { 
+        content: '\f078'; font-family: "Font Awesome 6 Free"; font-weight: 900;
+        position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%) rotate(0deg);
+        color: var(--accent-blue); opacity: 0.7; font-size: 0.9rem;
+        transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s ease;
+    }
+    .feature-item-enhanced:hover::after { transform: translateX(-50%) rotate(180deg); opacity: 0.9; }
+
+    .course-card img, .news-event-card img {
+      width: 100%; object-fit: cover; background-color: #e9ecef; 
+    }
+    .course-card img { 
+        height: 220px; border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+        margin: -30px -30px 20px -30px; width: calc(100% + 60px); transition: transform 0.4s ease;
+    }
+    .item-card.course-card:hover img { transform: scale(1.05); }
+    .news-event-card img { height: 180px; border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0; margin-bottom: 20px; }
+
+    .course-card .item-card-title { text-align: left; font-size: 1.45rem; } 
+    .course-card .item-card-text { text-align: left; margin-bottom: 20px; flex-grow: 1;}
+    .btn-learn-more { 
+        display: inline-block; align-self: flex-start;
+        background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--accent-blue) 100%); 
+        color: var(--text-light); padding: 10px 22px; text-decoration: none;
+        border-radius: var(--border-radius-pill); font-size: 0.9rem; font-weight: 600;
+        transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+        box-shadow: 0 2px 6px rgba(92, 133, 203, 0.3); 
+    }
+    .btn-learn-more i { margin-left: 8px; }
+    .btn-learn-more:hover {
+        background: linear-gradient(135deg, var(--accent-blue) 0%, var(--secondary-blue) 100%);
+        transform: translateY(-2px) scale(1.03); box-shadow: 0 4px 10px rgba(92, 133, 203, 0.4);
+    }
+
+     .news-event-card.no-image .news-event-card-content { padding-top: 0; }
+    .card-meta-info {
+        font-size: 0.85rem; color: var(--secondary-blue); margin-bottom: 10px; 
+        display: flex; align-items: center; flex-wrap: wrap;
+    }
+    .card-meta-info span { margin-right: 15px; display: inline-flex; align-items: center; }
+    .card-meta-info i { margin-right: 6px; color: var(--accent-blue); } 
+    .news-event-card .item-card-title { font-size: 1.35rem; text-align: left; color:var(--primary-blue) } 
+    .news-event-card .item-card-text { text-align: left; margin-bottom: 20px; flex-grow: 1; }
+    
+    .event-location-icon { 
+        color: var(--secondary-blue); margin-right: 5px;
+    }
+
+    .cta-section { 
+      background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--primary-blue) 100%); 
+      color: var(--text-light); padding: 75px 0; text-align: center;
+      box-shadow: 0 6px 12px -4px rgba(58, 95, 148, 0.10); 
+      position: relative; z-index: 2; 
+    }
+    .cta-section h2 { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 2.5rem); margin-bottom: 20px; font-weight: 700; }
+    .cta-section p { font-size: clamp(1rem, 2.5vw, 1.1rem); color: var(--text-light-secondary); margin-bottom: 35px; max-width: 650px; margin-left: auto; margin-right: auto; }
+    
+     .cta-section .cta-button-outline { color: var(--highlight-glow); border-color: var(--highlight-glow); }
+     .cta-section .cta-button-outline:hover { background-color: rgba(165,200,250, 0.1); border-color: var(--text-light); color: var(--text-light); }
+
+    .testimonial-card { background-color: var(--light-bg-alt); color: var(--text-dark); padding: 35px; }
+    .testimonial-card::before {
+        content: '\f10d'; font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: 3rem;
+        color: var(--accent-blue); position: absolute; top: 20px; left: 25px; opacity: 0.2; z-index:0;
+    }
+    .testimonial-card p.quote { font-size: 1.05rem; font-style: italic; margin-bottom: 25px; position: relative; z-index:1; padding-top: 10px; color: var(--text-dark-secondary); line-height: 1.75; }
+    .testimonial-author { display: flex; align-items: center; margin-top: auto; position: relative; z-index:1; }
+    .testimonial-author img { width: 60px; height: 60px; border-radius: 50%; margin-right: 18px; object-fit: cover; border: 3px solid var(--accent-blue); box-shadow: var(--shadow-sm); }
+    .testimonial-author-info h4 { font-family: var(--font-heading); font-size: 1.2rem; margin: 0 0 3px 0; font-weight: 600; color: var(--primary-blue); } 
+    .testimonial-author-info span { font-size: 0.9rem; opacity: 0.9; color: var(--secondary-blue); font-weight: 500; } 
+    
+    footer { background-color: var(--primary-blue); color: var(--text-light-secondary); padding: 75px 0 25px 0; font-size: 0.92rem; position: relative; z-index: 0;} 
+    .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 50px; text-align: left; }
+    .footer-column h4 { font-family: var(--font-heading); font-size: 1.35rem; color: var(--text-light); margin-bottom: 22px; position: relative; font-weight: 600; }
+    .footer-column h4::after { content: ''; display: block; width: 50px; height: 3px; background-color: var(--accent-blue); margin-top: 10px; }
+    .footer-column ul { list-style: none; }
+    .footer-column ul li { margin-bottom: 12px; }
+    .footer-column ul li a { color: var(--text-light-secondary); text-decoration: none; transition: color var(--transition-fast), padding-left var(--transition-fast); }
+    .footer-column ul li a:hover { color: var(--highlight-glow); padding-left: 7px; } 
+    .footer-column p { margin-bottom: 12px; line-height: 1.65; }
+    .footer-column p i.fas { color: var(--accent-blue); margin-right: 10px; width: 20px; text-align: center; }
+    .social-icons { margin-top: 20px; }
+    .social-icons a { color: var(--text-light-secondary); font-size: 1.5rem; margin-right: 16px; transition: color var(--transition-fast), transform var(--transition-fast); }
+    .social-icons a:hover { color: var(--highlight-glow); transform: translateY(-3px) scale(1.1); } 
+    .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--secondary-blue); font-size: 0.88rem; color: #BDC8D8; }
+    .footer-bottom .fa-heart { color: var(--accent-blue); }
+    
+    /* Animation Utility Classes */
+    .delay-100ms { animation-delay: 0.1s !important; }
+    .delay-200ms { animation-delay: 0.2s !important; }
+    .delay-300ms { animation-delay: 0.3s !important; }
+
+    .animate-on-scroll { opacity: 0; transform: translateY(50px); transition: opacity 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+    #scrollToTopBtn { position: fixed; bottom: 30px; right: 30px; z-index: 100; border: none; outline: none; cursor: pointer; background: linear-gradient(145deg, var(--accent-blue), var(--secondary-blue)); color: var(--text-light); width: 50px; height: 50px; border-radius: 50%; font-size: 1.1rem; box-shadow: var(--shadow-lg); transition: all var(--transition-med); display: flex; align-items: center; justify-content: center; opacity: 0; transform: scale(0.7) translateY(20px); pointer-events: none; }
+    #scrollToTopBtn.show { opacity: 1; transform: scale(1) translateY(0); pointer-events: auto; }
+    #scrollToTopBtn:hover { background: linear-gradient(145deg, var(--secondary-blue), var(--accent-blue)); transform: scale(1.15) translateY(-4px); box-shadow: var(--shadow-xl); }
+    
+    @media (max-width: 1024px) { .container, .header-content { padding: 0 20px;} nav a { padding: 10px 12px; font-size: 0.85rem;} }
+    @media (max-width: 768px) { 
+      .header-content { flex-direction: column; padding: 15px 20px; } 
+      .logo { margin-bottom: 15px; } 
+      nav { justify-content: center; width: 100%; } 
+      nav a { padding: 9px 7px; font-size: 0.8rem; margin: 4px 1px; } 
+      nav a.login-btn { margin-left: 8px;} 
+      .hero { min-height: 55vh; padding: 80px 0; }  
+      .cta-button { padding: 15px 30px; font-size: 1rem; } 
+      .section { padding: 75px 0; } 
+      .grid-container { grid-template-columns: 1fr; gap: 25px; } 
+      .footer-content { grid-template-columns: 1fr; text-align: center; gap: 35px; } 
+      .footer-column h4::after { margin-left: auto; margin-right: auto;} 
+      .social-icons { text-align: center; margin-top: 15px; } .social-icons a { margin: 0 10px;} 
+    }
+    @media (max-width: 480px) { .logo a { font-size: 2rem;} nav a { font-size: 0.75rem;} .cta-button { padding: 14px 25px; font-size: 0.95rem; } .cta-button-group { flex-direction: column; gap: 15px;} .testimonial-author img { width: 50px; height: 50px; margin-right: 12px;} .testimonial-author-info h4 { font-size: 1.1rem; } #scrollToTopBtn { width: 45px; height: 45px; font-size: 1rem; bottom: 20px; right: 20px;} }
+  </style>
+</head>
+<body>
+  <header id="mainHeader">
+    <div class="header-content">
+      <div class="logo">
+        <i class="fas fa-university logo-icon"></i>
+        <a href="/home">Edu<span>ra</span></a>
+      </div>
+      <nav>
+        <a href="/home" class="active">Home</a>
+        <a href="/about">About Us</a>
+        <a href="/courses">Courses</a>
+        <a href="/departments">Departments</a>
+        <a href="/placement">Placement</a>
+        <a href="/mou">MOU</a>
+        <a href="/contact">Contact</a>
+        <a href="/login" class="login-btn">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Ignite Your Future at <span class="highlight">Edura</span></h1>
+        <p>Your Premier Destination for Innovative Education, Practical Skills, and Boundless Opportunities for Professional Growth.</p>
+        <div class="cta-button-group">
+            <a href="/courses" class="cta-button animate-on-scroll">Discover Programs <i class="fas fa-rocket"></i></a>
+            <a href="/admission" class="cta-button cta-button-outline animate-on-scroll delay-100ms">Join Edura <i class="fas fa-user-plus"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="why-choose-us" class="section bg-alt">
+      <div class="container">
+        <h2 class="section-title animate-on-scroll">Why Edura Excels</h2>
+        <p class="section-subtitle animate-on-scroll">We deliver an education that transcends classrooms, focusing on impactful learning, career readiness, and personal development.</p>
+        <div class="grid-container">
+          <div class="item-card feature-item-enhanced animate-on-scroll">
+            <div class="feature-icon-wrapper">
+              <i class="fas fa-chalkboard-user item-card-icon"></i>
+            </div>
+            <h3 class="item-card-title">World-Class Faculty</h3>
+            <p class="item-card-text">Learn from leading academics and industry pioneers. Our faculty bring real-world experience and a passion for mentorship, ensuring you receive unparalleled guidance and support throughout your studies.</p>
+          </div>
+          <div class="item-card feature-item-enhanced animate-on-scroll delay-100ms">
+            <div class="feature-icon-wrapper">
+              <i class="fas fa-lightbulb item-card-icon"></i>
+            </div>
+            <h3 class="item-card-title">Future-Forward Curriculum</h3>
+            <p class="item-card-text">Engage with dynamic courses that tackle today's complexities and anticipate tomorrow's trends. We continuously update our programs to reflect the latest industry advancements and research breakthroughs.</p>
+          </div>
+          <div class="item-card feature-item-enhanced animate-on-scroll delay-200ms">
+            <div class="feature-icon-wrapper">
+              <i class="fas fa-briefcase item-card-icon"></i>
+            </div>
+            <h3 class="item-card-title">Strategic Career Pathways</h3>
+            <p class="item-card-text">Benefit from robust placement support, internships, and strong industry partnerships. Our dedicated career services team works to connect you with top employers and launch your professional journey.</p>
+          </div>
+          <div class="item-card feature-item-enhanced animate-on-scroll delay-300ms">
+            <div class="feature-icon-wrapper">
+              <i class="fas fa-users-viewfinder item-card-icon"></i>
+            </div>
+            <h3 class="item-card-title">Vibrant Global Community</h3>
+            <p class="item-card-text">Thrive in a diverse, inclusive campus environment fostering collaboration and global insights. Connect with peers and faculty from around the world, expanding your network and cultural understanding.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="featured-courses" class="section">
+      <div class="container">
+        <h2 class="section-title animate-on-scroll">Explore Our Flagship Programs</h2>
+        <p class="section-subtitle animate-on-scroll">Dive into meticulously crafted courses that fuse theoretical depth with practical expertise, preparing you for a dynamic global landscape.</p>
+        <div class="grid-container">
+          <article class="item-card course-card animate-on-scroll">
+            <img src="https://images.unsplash.com/photo-1523289333742-be124282b74c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGFpfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Advanced AI & Machine Learning">
+            <h3 class="item-card-title">Advanced AI & Machine Learning</h3>
+            <p class="item-card-text">Master deep learning, neural networks, and data-driven intelligence to lead technological innovation.</p>
+            <a href="/courses/ai-ml" class="btn-learn-more">Explore Program <i class="fas fa-arrow-right"></i></a>
+          </article>
+          <article class="item-card course-card animate-on-scroll delay-100ms">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YnVzaW5lc3MlMjBzdHJhdGVneXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Strategic Business & Entrepreneurship">
+            <h3 class="item-card-title">Strategic Business & Entrepreneurship</h3>
+            <p class="item-card-text">Cultivate leadership acumen and entrepreneurial skills to navigate and shape the future of business.</p>
+            <a href="/courses/business" class="btn-learn-more">Explore Program <i class="fas fa-arrow-right"></i></a>
+          </article>
+          <article class="item-card course-card animate-on-scroll delay-200ms">
+            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4be3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZGlnaXRhbCUyMG1hcmtldGluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Digital Media & Creative Technologies">
+            <h3 class="item-card-title">Digital Media & Creative Tech</h3>
+            <p class="item-card-text">Unleash your creativity with cutting-edge tools in design, animation, and interactive media development.</p>
+            <a href="/courses/digital-media" class="btn-learn-more">Explore Program <i class="fas fa-arrow-right"></i></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="latest-news" class="section bg-alt">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Latest News from Edura</h2>
+            <p class="section-subtitle animate-on-scroll">Stay updated with our recent achievements, research breakthroughs, and campus stories.</p>
+            <div class="grid-container">
+                <article class="item-card news-event-card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1515187021393-37aEbe902062?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmV3cyUyMHJlc2VhcmNofGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Edura Research Grant news">
+                    <div class="news-event-card-content">
+                        <div class="card-meta-info">
+                            <span><i class="fas fa-calendar-alt"></i> October 28, 2023</span>
+                            <span><i class="fas fa-tag"></i> Academics</span>
+                        </div>
+                        <h3 class="item-card-title">Edura Awarded Prestigious Grant for AI Research</h3>
+                        <p class="item-card-text">Our AI department has secured a significant grant to further cutting-edge research in ethical AI development and machine learning applications...</p>
+                        <a href="/news/ai-grant" class="btn-learn-more">Read More <i class="fas fa-angle-right"></i></a>
+                    </div>
+                </article>
+                <article class="item-card news-event-card animate-on-scroll delay-100ms">
+                    <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtcHVzJTIwZXZlbnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Global Innovators Summit news">
+                     <div class="news-event-card-content">
+                        <div class="card-meta-info">
+                           <span><i class="fas fa-calendar-alt"></i> October 22, 2023</span>
+                           <span><i class="fas fa-bullhorn"></i> Campus Life</span>
+                        </div>
+                        <h3 class="item-card-title">Successful Edura Global Innovators Summit Concludes</h3>
+                        <p class="item-card-text">This year's summit brought together thought leaders and students from over 30 countries to discuss sustainable innovation and technology trends...</p>
+                        <a href="/news/innovators-summit" class="btn-learn-more">Read More <i class="fas fa-angle-right"></i></a>
+                    </div>
+                </article>
+                <article class="item-card news-event-card animate-on-scroll delay-200ms">
+                     <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGFsdW1uaSUyMG5ld3N8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Alumni Spotlight news">
+                     <div class="news-event-card-content">
+                        <div class="card-meta-info">
+                           <span><i class="fas fa-calendar-alt"></i> October 15, 2023</span>
+                           <span><i class="fas fa-graduation-cap"></i> Alumni</span>
+                        </div>
+                        <h3 class="item-card-title">Alumni Spotlight: Dr. Jane Doe Revolutionizes Healthcare Tech</h3>
+                        <p class="item-card-text">We're proud to feature Edura alumna Dr. Jane Doe, whose recent work in medical AI is making waves globally. Learn about her inspiring journey...</p>
+                        <a href="/news/alumni-spotlight-jane-doe" class="btn-learn-more">Read More <i class="fas fa-angle-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="upcoming-events" class="section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Upcoming Events at Edura</h2>
+            <p class="section-subtitle animate-on-scroll">Join us for engaging workshops, seminars, and campus activities. There's always something happening!</p>
+            <div class="grid-container">
+                <article class="item-card news-event-card animate-on-scroll">
+                     <img src="https://images.unsplash.com/photo-1517486808906-6538cb3ea698?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d29ya3Nob3B8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Workshop event">
+                     <div class="news-event-card-content">
+                        <div class="card-meta-info">
+                            <span><i class="fas fa-calendar-check"></i> November 5, 2023</span>
+                            <span><i class="fas fa-clock"></i> 2:00 PM - 4:00 PM</span>
+                        </div>
+                        <h3 class="item-card-title">Workshop: Future of Web Development</h3>
+                        <p class="item-card-text"><i class="fas fa-map-marker-alt event-location-icon"></i>Online via Zoom & Tech Hub Auditorium</p>
+                        <p class="item-card-text">Explore emerging trends in web technologies with industry experts. Interactive sessions and Q&A.</p>
+                        <a href="/events/web-dev-workshop" class="btn-learn-more">View Details <i class="fas fa-info-circle"></i></a>
+                    </div>
+                </article>
+                <article class="item-card news-event-card animate-on-scroll delay-100ms">
+                     <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Z3Vlc3QlMjBsZWN0dXJlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Guest Lecture event">
+                     <div class="news-event-card-content">
+                        <div class="card-meta-info">
+                            <span><i class="fas fa-calendar-check"></i> November 12, 2023</span>
+                            <span><i class="fas fa-users"></i> Guest Lecture</span>
+                        </div>
+                        <h3 class="item-card-title">Guest Lecture: Ethics in Artificial Intelligence</h3>
+                        <p class="item-card-text"><i class="fas fa-map-marker-alt event-location-icon"></i>Grand Hall, Edura Campus</p>
+                        <p class="item-card-text">Featuring renowned AI ethicist Prof. Alistair Finch. Open to all students and faculty.</p>
+                        <a href="/events/ai-ethics-lecture" class="btn-learn-more">Learn More <i class="fas fa-info-circle"></i></a>
+                    </div>
+                </article>
+                 <article class="item-card news-event-card animate-on-scroll delay-200ms">
+                     <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aGFja2F0aG9ufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Hackathon event">
+                     <div class="news-event-card-content">
+                        <div class="card-meta-info">
+                           <span><i class="fas fa-calendar-check"></i> November 18-19, 2023</span>
+                           <span><i class="fas fa-code"></i> Hackathon</span>
+                        </div>
+                        <h3 class="item-card-title">Edura Annual Hackathon: Innovate for Good</h3>
+                        <p class="item-card-text"><i class="fas fa-map-marker-alt event-location-icon"></i>Innovation Center & Virtual Participation</p>
+                        <p class="item-card-text">Team up and build solutions for real-world challenges. Prizes and mentorship available!</p>
+                        <a href="/events/hackathon-2023" class="btn-learn-more">Register Now <i class="fas fa-edit"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="animate-on-scroll">Ready to Shape Your Tomorrow?</h2>
+            <p class="animate-on-scroll delay-100ms">Your transformative educational experience starts here. Connect with Edura and step into your future.</p>
+            <div class="cta-button-group">
+                 <a href="/login" class="cta-button animate-on-scroll delay-200ms">Enroll for Fall <i class="fas fa-calendar-alt"></i></a>
+                 <a href="/contact" class="cta-button cta-button-outline animate-on-scroll delay-300ms">Talk to an Advisor <i class="fas fa-headset"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section bg-alt">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Impact Stories from Edura Alumni</h2>
+            <p class="section-subtitle animate-on-scroll">Hear how Edura has empowered graduates to achieve remarkable success and make a difference in their fields.</p>
+            <div class="grid-container">
+                <article class="item-card testimonial-card animate-on-scroll">
+                    <p class="quote">Edura didn't just teach me; it inspired me. The industry-relevant projects and exceptional mentorship were game-changers for my career.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/34.jpg" alt="Alumni Elena Rodriguez">
+                        <div class="testimonial-author-info">
+                            <h4>Elena Rodriguez</h4>
+                            <span>Lead Software Engineer, InnovateX</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="item-card testimonial-card animate-on-scroll delay-100ms">
+                    <p class="quote">The global connections and critical thinking skills I honed at Edura are invaluable. I felt truly prepared to tackle real-world business challenges.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/60.jpg" alt="Alumni David Chen">
+                         <div class="testimonial-author-info">
+                            <h4>David Chen</h4>
+                            <span>Marketing Director, Alpha Corp</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="item-card testimonial-card animate-on-scroll delay-200ms">
+                    <p class="quote">From faculty support to the vibrant campus life, Edura provided an enriching environment that fostered both personal and professional growth.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/46.jpg" alt="Alumni Aisha Khan">
+                        <div class="testimonial-author-info">
+                            <h4>Aisha Khan</h4>
+                            <span>Senior UX Designer, Creative Solutions</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h4><i class="fas fa-school"></i> Edura Institute</h4>
+          <p>Dedicated to fostering innovation, critical thinking, and leadership through world-class education and research.
+          </p>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Navigate Edura</h4>
+          <ul>
+            <li><a href="/about">Our Mission & Vision</a></li>
+            <li><a href="/admission">Admissions Guide</a></li>
+            <li><a href="/courses">All Programs</a></li>
+            <li><a href="/departments">Academic Departments</a></li>
+            <li><a href="/campus-life">Campus Life</a></li>
+            <li><a href="/research">Research Initiatives</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Student Resources</h4>
+          <ul>
+            <li><a href="/student-portal">My Edura Portal</a></li>
+            <li><a href="/placement">Career Development</a></li>
+            <li><a href="/library">Online Library</a></li>
+            <li><a href="/mou">Global Partnerships</a></li>
+            <li><a href="/alumni">Alumni Network</a></li>
+            <li><a href="/support">Academic Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Connect With Us</h4>
+          <p><i class="fas fa-map-marked-alt"></i> 1 University Plaza, Edura City, EC 12345</p>
+          <p><i class="fas fa-phone-volume"></i> +1 (555) EDURA-01</p>
+          <p><i class="fas fa-envelope-open-text"></i> contact@edura.university</p>
+          <p><i class="fas fa-globe"></i> www.edura.university</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <script>document.write(new Date().getFullYear())</script> Edura University. All Rights Reserved. Built with <i class="fas fa-heart"></i> by Innovators.</p>
+    </div>
+  </footer>
+
+  <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+  <script>
+    const mainHeader = document.getElementById("mainHeader");
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+    let lastScrollTop = 0;
+
+    window.addEventListener("scroll", function() {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > 50) { mainHeader.classList.add("scrolled"); }
+      else { mainHeader.classList.remove("scrolled"); }
+      if (scrollTop > 300) { scrollToTopBtn.classList.add("show"); }
+      else { scrollToTopBtn.classList.remove("show"); }
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }, false);
+
+    scrollToTopBtn.addEventListener("click", () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    const navLinks = document.querySelectorAll("nav a:not(.login-btn)");
+    const currentPath = window.location.pathname;
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === currentPath || (currentPath === '/' && link.getAttribute('href') === '/home')) {
+        link.classList.add('active');
+      }
+    });
+
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+    const observer = new IntersectionObserver((entries, observerInstance) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                // observerInstance.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    animatedElements.forEach(el => { observer.observe(el); });
+  </script>
+</body>
+</html>

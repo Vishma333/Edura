@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Edura | Get In Touch With Us</title>
+  <!-- Reusing fonts and Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      /* Palette based on #80acf8 (from previous successful implementation) */
+      --primary-blue: #3A5F94;
+      --secondary-blue: #5C85CB;
+      --accent-blue: #80acf8;
+      --highlight-glow: #A5C8FA;
+      --light-blue-bg-tint: #EBF1FF;
+
+      --light-bg: var(--light-blue-bg-tint);
+      --light-bg-alt: #FFFFFF;
+
+      --text-dark: #1A202C;
+      --text-dark-secondary: #4A5568;
+      --text-light: #FFFFFF;
+      --text-light-secondary: #F0F8FF;
+
+      --font-heading: 'Bricolage Grotesque', 'Arial Narrow Bold', sans-serif;
+      --font-body: 'Inter', sans-serif;
+
+      --shadow-sm: 0 2px 6px rgba(58, 95, 148, 0.08);
+      --shadow-md: 0 4px 12px rgba(58, 95, 148, 0.12);
+      --shadow-lg: 0 10px 20px rgba(58, 95, 148, 0.15);
+      --shadow-xl: 0 15px 30px rgba(58, 95, 148, 0.18);
+
+      --border-radius-sm: 8px;
+      --border-radius-md: 16px;
+      --border-radius-lg: 24px;
+      --border-radius-pill: 50px;
+
+      --transition-fast: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-med: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 25px; } 
+
+    /* --- Header & Navigation (Identical to previous pages) --- */
+    header {
+      background-color: var(--primary-blue); 
+      color: var(--text-light); padding: 16px 0;
+      position: sticky; top: 0; z-index: 1000; 
+      box-shadow: 0 2px 8px rgba(58, 95, 148, 0.2); 
+      transition: background-color var(--transition-med), box-shadow var(--transition-med);
+    }
+    header.scrolled {
+      background-color: rgba(58, 95, 148, 0.85); 
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);        
+      box-shadow: 0 4px 12px rgba(58, 95, 148, 0.25);
+    }
+    .header-content {
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1360px; margin: 0 auto; padding: 0 25px;
+    }
+    .logo { display: flex; align-items: center; }
+    .logo-icon {
+      font-size: 2rem; color: var(--accent-blue); margin-right: 12px; 
+      transition: transform var(--transition-fast) ease-in-out;
+    }
+    .logo:hover .logo-icon { transform: rotate(-10deg) scale(1.15); }
+    .logo a {
+      font-family: var(--font-heading); font-size: 2.4rem; font-weight: 700;
+      color: var(--text-light); text-decoration: none; letter-spacing: -0.5px;
+    }
+    .logo a span {
+      background: linear-gradient(60deg, var(--text-light) 15%, var(--accent-blue) 85%);
+      -webkit-background-clip: text; -moz-background-clip: text; background-clip: text;
+      color: transparent; font-weight: 700;
+    } 
+    nav { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
+    nav a {
+      color: var(--text-light-secondary); text-decoration: none;
+      padding: 10px 14px; margin: 0 4px;    
+      font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; border-radius: var(--border-radius-sm);
+      transition: color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+      position: relative;
+    }
+    nav a::before {
+      content: ""; position: absolute; bottom: 0px; 
+      left: 50%; transform: translateX(-50%); width: 0; height: 2px; 
+      background-color: var(--accent-blue); border-radius: 1px; 
+      transition: width var(--transition-med) cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    nav a:hover, nav a.active { color: var(--text-light); transform: translateY(-1px); }
+    nav a:hover::before, nav a.active::before { width: 65%; } 
+    nav a.login-btn {
+      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--highlight-glow) 100%);
+      color: var(--primary-blue); padding: 10px 22px; 
+      border-radius: var(--border-radius-pill); margin-left: 12px; 
+      font-weight: 600; box-shadow: var(--shadow-sm);
+    }
+    nav a.login-btn:hover {
+      background: linear-gradient(135deg, var(--highlight-glow) 0%, var(--accent-blue) 100%);
+      box-shadow: var(--shadow-md); 
+    }
+    nav a.login-btn::before { display: none; }
+    /* --- End Header & Navigation --- */
+
+    /* Contact Page Specific Hero */
+    .page-hero { 
+      background: linear-gradient(rgba(58, 95, 148, 0.8), rgba(92, 133, 203, 0.7)), url('https://images.unsplash.com/photo-1534536281715-e28d76689b4d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29udGFjdCUyMHVzfGVufDB8fDB8fHww&auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
+      color: var(--text-light);
+      padding: 80px 0 70px; 
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(58, 95, 148, 0.15); 
+    }
+    .page-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 700; margin-bottom: 10px;
+    }
+    .page-hero p.subtitle {
+      font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+      color: var(--text-light-secondary); max-width: 650px; margin: 0 auto;
+    }
+
+    /* General Section Styling */
+    .section { padding: 70px 0; }
+    .section.bg-alt { background-color: var(--light-bg-alt); }
+    .section-title {
+      font-family: var(--font-heading); font-size: clamp(2rem, 4.5vw, 2.6rem);
+      color: var(--primary-blue); text-align: center;
+      margin-bottom: 20px; position: relative; display: block;     
+    }
+    .section-title::after {
+      content: ''; display: block; width: 60px; height: 3.5px;
+      background-color: var(--accent-blue); margin: 12px auto 0;
+      border-radius: 2px;
+    }
+    .section-subtitle {
+        font-size: 1.1rem; color: var(--text-dark-secondary); text-align: center; 
+        max-width: 750px; margin: -10px auto 50px auto; 
+    }
+
+    /* Contact Page Layout */
+    .contact-layout {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr; /* Adjust ratio as needed */
+        gap: 40px;
+        align-items: flex-start;
+    }
+    @media (max-width: 900px) {
+        .contact-layout { grid-template-columns: 1fr; }
+        .contact-info-block { margin-bottom: 40px; }
+    }
+
+    /* Contact Info Block */
+    .contact-info-block {
+        background-color: var(--light-bg-alt);
+        padding: 30px;
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-md);
+    }
+    .contact-info-block h3 {
+        font-family: var(--font-heading);
+        font-size: 1.6rem;
+        color: var(--primary-blue);
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--light-blue-bg-tint);
+    }
+    .contact-info-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+    .contact-info-item i {
+        font-size: 1.3rem;
+        color: var(--accent-blue);
+        margin-right: 15px;
+        width: 25px; /* Ensure icons align */
+        text-align: center;
+        margin-top: 4px;
+    }
+    .contact-info-item div p {
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: var(--text-dark-secondary);
+    }
+    .contact-info-item div p strong {
+        color: var(--text-dark);
+        display: block;
+        margin-bottom: 2px;
+    }
+    .contact-info-item a {
+        color: var(--secondary-blue);
+        text-decoration: none;
+        transition: color var(--transition-fast);
+    }
+    .contact-info-item a:hover {
+        color: var(--accent-blue);
+        text-decoration: underline;
+    }
+
+    /* Contact Form Styling */
+    .contact-form-container {
+        background-color: var(--light-bg-alt);
+        padding: 35px;
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-md);
+    }
+    .contact-form-container h3 {
+        font-family: var(--font-heading);
+        font-size: 1.6rem;
+        color: var(--primary-blue);
+        margin-bottom: 25px;
+        text-align: left; /* Align form title left */
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+        display: block;
+        font-size: 0.9rem;
+        color: var(--text-dark);
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border-radius: var(--border-radius-sm);
+        border: 1px solid #ced4da; /* Standard input border */
+        font-size: 1rem;
+        font-family: var(--font-body);
+        transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        background-color: var(--light-bg-alt);
+    }
+    .form-group input[type="text"]:focus,
+    .form-group input[type="email"]:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: var(--accent-blue);
+        box-shadow: 0 0 0 0.2rem rgba(128, 172, 248, 0.25);
+    }
+    .form-group textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+    .submit-btn { /* Uses general .cta-button styling defined elsewhere */
+        width: 100%;
+        padding: 15px; /* Full width button often needs more padding */
+        font-size: 1.1rem;
+        justify-content: center; /* Center icon and text if flex */
+    }
+    /* General CTA button */
+    .cta-button {
+      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--highlight-glow) 100%);
+      color: var(--primary-blue); 
+      text-decoration: none; font-family: var(--font-body);
+      font-weight: 600; border-radius: var(--border-radius-pill);
+      transition: var(--transition-fast); display: inline-flex; align-items: center;
+      box-shadow: 0 3px 10px rgba(128, 172, 248, 0.35); border: none;
+    }
+    .cta-button i { margin-left: 8px; }
+    .cta-button:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 6px 15px rgba(128, 172, 248, 0.45); }
+
+
+    /* Map Placeholder Styling */
+    .map-section {
+      margin-top: 70px; /* Spacing above map */
+    }
+    .map-placeholder {
+        background-color: #e0e4e8; /* Neutral gray */
+        height: 400px;
+        border-radius: var(--border-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+    }
+    .map-placeholder p {
+        font-size: 1.2rem;
+        color: var(--text-dark-secondary);
+        font-weight: 500;
+    }
+    .map-placeholder i {
+        font-size: 2rem;
+        color: var(--secondary-blue);
+        margin-bottom: 10px;
+        display: block;
+    }
+    
+    /* Animations & Footer (Identical to other pages) */
+    .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+    .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+
+    footer { background-color: var(--primary-blue); color: var(--text-light-secondary); padding: 75px 0 25px 0; font-size: 0.92rem; position: relative; z-index: 0;} 
+    .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 50px; text-align: left; }
+    .footer-column h4 { font-family: var(--font-heading); font-size: 1.35rem; color: var(--text-light); margin-bottom: 22px; position: relative; font-weight: 600; }
+    .footer-column h4::after { content: ''; display: block; width: 50px; height: 3px; background-color: var(--accent-blue); margin-top: 10px; }
+    .footer-column ul { list-style: none; }
+    .footer-column ul li { margin-bottom: 12px; }
+    .footer-column ul li a { color: var(--text-light-secondary); text-decoration: none; transition: color var(--transition-fast), padding-left var(--transition-fast); }
+    .footer-column ul li a:hover { color: var(--highlight-glow); padding-left: 7px; } 
+    .footer-column p { margin-bottom: 12px; line-height: 1.65; }
+    .footer-column p i.fas { color: var(--accent-blue); margin-right: 10px; width: 20px; text-align: center; }
+    .social-icons { margin-top: 20px; }
+    .social-icons a { color: var(--text-light-secondary); font-size: 1.5rem; margin-right: 16px; transition: color var(--transition-fast), transform var(--transition-fast); }
+    .social-icons a:hover { color: var(--highlight-glow); transform: translateY(-3px) scale(1.1); } 
+    .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--secondary-blue); font-size: 0.88rem; color: #BDC8D8; }
+    .footer-bottom .fa-heart { color: var(--accent-blue); }
+  </style>
+</head>
+<body>
+  <!-- Header from other pages -->
+  <header id="mainHeader">
+    <div class="header-content">
+      <div class="logo">
+        <i class="fas fa-university logo-icon"></i>
+        <a href="/home">Edu<span>ra</span></a>
+      </div>
+      <nav>
+        <a href="/home">Home</a>
+        <a href="/about">About Us</a>
+        <a href="/courses">Courses</a>
+        <a href="/departments">Departments</a>
+        <a href="/placement">Placement Cell</a>
+        <a href="/mou">MOU</a>
+        <a href="/contact" class="active">Contact</a> <!-- Active link -->
+        <a href="/login" class="login-btn">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contact Page Hero Section -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Connect With Edura</h1>
+      <p class="subtitle">We're here to answer your questions, listen to your feedback, and explore opportunities together. Reach out to us!</p>
+    </div>
+  </section>
+
+  <main>
+    <section id="contact-details" class="section">
+      <div class="container">
+        <h2 class="section-title animate-on-scroll">Get In Touch</h2>
+        <p class="section-subtitle animate-on-scroll">Use the form below, or find our direct contact information and location.</p>
+
+        <div class="contact-layout">
+            <div class="contact-info-block animate-on-scroll">
+                <h3>Direct Contact</h3>
+                <div class="contact-info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <p><strong>Our Main Campus:</strong></p>
+                        <p>1 University Plaza, Edura City, EC 12345, Knowledge State</p>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <p><strong>General Inquiries:</strong> <a href="tel:+15551234567">+1 (555) EDURA-01</a></p>
+                        <p><strong>Admissions Helpline:</strong> <a href="tel:+15559876543">+1 (555) EDURA-ADMIT</a></p>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <p><strong>General:</strong> <a href="mailto:info@edura.university">info@edura.university</a></p>
+                        <p><strong>Admissions:</strong> <a href="mailto:admissions@edura.university">admissions@edura.university</a></p>
+                        <p><strong>Support:</strong> <a href="mailto:support@edura.university">support@edura.university</a></p>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <p><strong>Office Hours:</strong></p>
+                        <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
+                        <p>Saturday: 10:00 AM - 2:00 PM (Admissions Office)</p>
+                        <p>Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-container animate-on-scroll delay-100ms">
+                <h3>Send Us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="e.g., John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="e.g., johndoe@example.com" required>
+                    </div>
+                     <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="e.g., Admission Inquiry, Partnership" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Write your detailed message here..." required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button submit-btn">Send Message <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="map-location" class="section map-section bg-alt">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Visit Us</h2>
+            <div class="map-placeholder animate-on-scroll">
+                <div>
+                    <i class="fas fa-map-marked-alt"></i>
+                    <p>Our Location on Google Maps</p>
+                    <!-- Replace this div with your actual Google Maps embed iframe -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+  </main>
+
+  <!-- Footer from other pages -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h4><i class="fas fa-school"></i> Edura Institute</h4>
+          <p>Dedicated to fostering innovation, critical thinking, and leadership through world-class education and research.
+          </p>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Navigate Edura</h4>
+          <ul>
+            <li><a href="/about">Our Mission & Vision</a></li>
+            <li><a href="/admission">Admissions Guide</a></li>
+            <li><a href="/courses">All Programs</a></li>
+            <li><a href="/departments">Academic Departments</a></li>
+            <li><a href="/campus-life">Campus Life</a></li>
+            <li><a href="/research">Research Initiatives</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Student Resources</h4>
+          <ul>
+            <li><a href="/student-portal">My Edura Portal</a></li>
+            <li><a href="/placement">Career Development</a></li>
+            <li><a href="/library">Online Library</a></li>
+            <li><a href="/mou">Global Partnerships</a></li>
+            <li><a href="/alumni">Alumni Network</a></li>
+            <li><a href="/support">Academic Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Connect With Us</h4>
+          <p><i class="fas fa-map-marked-alt"></i> 1 University Plaza, Edura City, EC 12345</p>
+          <p><i class="fas fa-phone-volume"></i> +1 (555) EDURA-01</p>
+          <p><i class="fas fa-envelope-open-text"></i> contact@edura.university</p>
+          <p><i class="fas fa-globe"></i> www.edura.university</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <script>document.write(new Date().getFullYear())</script> Edura University. All Rights Reserved. Built with <i class="fas fa-heart"></i> by Innovators.</p>
+    </div>
+  </footer>
+
+  <script>
+    const mainHeaderContact = document.getElementById("mainHeader");
+    if(mainHeaderContact){
+        window.addEventListener("scroll", function() {
+        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            mainHeaderContact.classList.add("scrolled");
+        } else {
+            mainHeaderContact.classList.remove("scrolled");
+        }
+        });
+    }
+
+    const navLinksContact = document.querySelectorAll("nav a:not(.login-btn)");
+    const currentPathContact = window.location.pathname;
+    navLinksContact.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === currentPathContact || link.getAttribute('href') === currentPathContact.replace('.html', '')) {
+        link.classList.add('active');
+      }
+    });
+
+    const animatedElementsContact = document.querySelectorAll('.animate-on-scroll');
+    const observerOptionsContact = { root: null, rootMargin: '0px', threshold: 0.1 };
+    const observerContact = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, observerOptionsContact);
+    animatedElementsContact.forEach(el => { observerContact.observe(el); });
+
+    // Form submission alert (can be expanded with actual AJAX submission)
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent actual form submission for now
+            // Basic validation (can be more comprehensive)
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
+                alert("Please fill out all required fields.");
+                return;
+            }
+            alert("Thank you, " + name + "! Your message has been received (this is a demo).");
+            contactForm.reset(); // Reset form fields
+        });
+    }
+  </script>
+</body>
+</html>

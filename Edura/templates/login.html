@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Edura | Access Your Account</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      /* Palette based on #80acf8 */
+      --primary-blue: #3A5F94;
+      --secondary-blue: #5C85CB;
+      --accent-blue: #80acf8;
+      --highlight-glow: #A5C8FA;
+      --light-blue-bg-tint: #EBF1FF; 
+
+      --light-bg: var(--light-blue-bg-tint);
+      --light-bg-alt: #FFFFFF; 
+
+      --text-dark: #1A202C;
+      --text-dark-secondary: #4A5568;
+      --text-light: #FFFFFF;
+      --text-light-secondary: #F0F8FF;
+
+      --font-heading: 'Bricolage Grotesque', 'Arial Narrow Bold', sans-serif;
+      --font-body: 'Inter', sans-serif;
+
+      --shadow-sm: 0 2px 6px rgba(58, 95, 148, 0.08);
+      --shadow-md: 0 4px 12px rgba(58, 95, 148, 0.12);
+      --shadow-lg: 0 10px 20px rgba(58, 95, 148, 0.15);
+      --shadow-xl: 0 15px 30px rgba(58, 95, 148, 0.18);
+
+      --border-radius-sm: 8px;
+      --border-radius-md: 12px; 
+      --border-radius-lg: 18px; 
+      --border-radius-pill: 50px;
+
+      --transition-fast: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-med: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      background: linear-gradient(120deg, var(--light-blue-bg-tint) 0%, var(--accent-blue) 100%);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      display: flex;
+      flex-direction: column; 
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px; 
+    }
+    
+    .login-page-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%; 
+    }
+
+    .login-container { 
+      background-color: rgba(255, 255, 255, 0.7); 
+      -webkit-backdrop-filter: blur(15px); 
+      backdrop-filter: blur(15px);        
+      padding: 25px 30px; 
+      border-radius: var(--border-radius-lg); 
+      box-shadow: 0 10px 35px 0 rgba(58, 95, 148, 0.2); 
+      border: 1px solid rgba(255, 255, 255, 0.25); 
+      text-align: center;
+      position: relative;
+      animation: fadeInScaleUp 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+      width: 90vw; 
+      max-width: 350px; 
+      aspect-ratio: 9 / 16; 
+      max-height: 85vh; 
+      /* overflow-y: auto; REMOVED by default */
+      display: flex;
+      flex-direction: column;
+      justify-content: center; 
+    }
+
+    @keyframes fadeInScaleUp {
+        from { opacity: 0; transform: scale(0.95) translateY(10px); }
+        to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .login-logo-container { margin-bottom: 15px; } 
+    .login-logo-container .logo-icon { font-size: 2rem; color: var(--accent-blue); }
+    .login-logo-container .logo-text {
+        font-family: var(--font-heading); font-size: 2rem; font-weight: 700;
+        color: var(--primary-blue); text-decoration: none;
+    }
+    .login-logo-container .logo-text span {
+        background: linear-gradient(60deg, var(--primary-blue) 15%, var(--accent-blue) 85%);
+        -webkit-background-clip: text; -moz-background-clip: text; background-clip: text;
+        color: transparent;
+    }
+
+    .login-container h2 {
+      font-family: var(--font-heading); font-size: 1.4rem; 
+      color: var(--primary-blue);
+      margin-bottom: 5px; 
+      font-weight: 600;
+    }
+    .login-container p.subtitle {
+        color: var(--text-dark-secondary); font-size: 0.85rem; 
+        margin-bottom: 15px; 
+    }
+
+    .form-group { margin-bottom: 12px; position: relative; } 
+    .form-group label {
+      display: block; text-align: left; font-size: 0.75rem; 
+      color: var(--text-dark-secondary);
+      font-weight: 500; margin-bottom: 4px; 
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"], 
+    .form-group input[type="password"] {
+      width: 100%; padding: 10px 12px; padding-left: 35px; 
+      border-radius: var(--border-radius-sm);
+      border: 1px solid rgba(58, 95, 148, 0.2); 
+      font-size: 0.9rem; 
+      font-family: var(--font-body);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+      background-color: rgba(255, 255, 255, 0.7); 
+      color: var(--text-dark);
+    }
+    .form-group input[type="text"]:focus,
+    .form-group input[type="email"]:focus,
+    .form-group input[type="password"]:focus {
+      outline: none; border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(128, 172, 248, 0.4); 
+      background-color: rgba(255, 255, 255, 0.9); 
+    }
+    .form-group .input-icon {
+        position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+        color: var(--secondary-blue); font-size: 0.9rem; pointer-events: none; 
+    }
+    .form-group label + .input-icon { top: calc(50% + 6px);  }
+    .form-group input:-webkit-autofill,
+    .form-group input:-webkit-autofill:hover, 
+    .form-group input:-webkit-autofill:focus, 
+    .form-group input:-webkit-autofill:active  {
+        -webkit-box-shadow: 0 0 0 30px rgba(255, 255, 255, 0.8) inset !important; 
+        -webkit-text-fill-color: var(--text-dark) !important;
+    }
+
+    .login-btn { 
+      width: 100%; padding: 10px; font-size: 0.95rem; justify-content: center; 
+      margin-top: 10px; 
+      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--secondary-blue) 100%);
+      color: var(--text-light); text-decoration: none; font-family: var(--font-body);
+      font-weight: 600; border-radius: var(--border-radius-pill);
+      transition: var(--transition-fast); display: inline-flex; align-items: center;
+      box-shadow: 0 3px 10px rgba(92, 133, 203, 0.35); 
+      border: none; cursor: pointer;
+    }
+    .login-btn:hover {
+      background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--accent-blue) 100%);
+      transform: translateY(-2px); box-shadow: 0 5px 15px rgba(92, 133, 203, 0.45);
+    }
+    .login-btn i { margin-left: 8px; }
+
+    .form-options {
+        display: flex; justify-content: space-between; align-items: center;
+        margin-top: 12px; margin-bottom: 15px; font-size: 0.75rem; 
+    }
+    .form-options .remember-me { display: flex; align-items: center; color: var(--text-dark-secondary); }
+    .form-options .remember-me input[type="checkbox"] { margin-right: 4px; transform: scale(0.9); accent-color: var(--accent-blue); }
+    .form-options a.forgot-password {
+      color: var(--secondary-blue); text-decoration: none; transition: color var(--transition-fast);
+    }
+    .form-options a.forgot-password:hover { color: var(--accent-blue); text-decoration: underline; }
+
+    .divider-text {
+        font-size: 0.75rem; color: var(--text-dark-secondary); text-align: center; margin-bottom: 12px; 
+        display: flex; align-items: center;
+    }
+    .divider-text::before, .divider-text::after {
+        content: ''; flex-grow: 1; height: 1px; background-color: rgba(58, 95, 148, 0.2); 
+        margin: 0 6px; 
+    }
+
+    .social-login-btn {
+        display: flex; align-items: center; justify-content: center; width: 100%; padding: 9px; 
+        border-radius: var(--border-radius-sm); font-size: 0.85rem; font-weight: 500; 
+        text-decoration: none; transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
+        margin-bottom: 8px; border: 1px solid rgba(58, 95, 148, 0.2);
+        color: var(--text-dark); background-color: rgba(255,255,255,0.75); 
+    }
+    .social-login-btn i { font-size: 1rem; margin-right: 6px; } /* Google icon from FA will be default color */
+    .social-login-btn.google i.fab.fa-google { color: #DB4437; } /* Specific color for FA Google icon */
+    .social-login-btn:hover {
+        background-color: rgba(255,255,255,0.9); box-shadow: var(--shadow-sm);
+    }
+
+    .form-message { margin-top: 12px; font-size: 0.8rem; min-height: 1.4em; } 
+    .form-message.success { color: #28a745; font-weight: 500; } 
+    .form-message.error { color: #dc3545; font-weight: 500; }   
+
+    .footer-links { margin-top: 20px; font-size: 0.8rem; color: var(--text-dark-secondary); } 
+    .footer-links a {
+      color: var(--primary-blue); text-decoration: none; font-weight: 500;
+      transition: color var(--transition-fast);
+    }
+    .footer-links a:hover { color: var(--accent-blue); text-decoration: underline; }
+
+    @media (max-height: 620px) { /* More aggressive height adjustments if needed */
+        .login-container {
+            aspect-ratio: unset; 
+            max-height: none;    
+            width: 90vw;
+            max-width: 350px;    
+            padding: 20px;     
+            justify-content: flex-start; 
+            overflow-y: auto; /* Re-introduce scroll if content cannot fit this extremely */
+        }
+        .login-logo-container { margin-bottom: 10px; }
+        .login-container h2 { font-size: 1.3rem; }
+        .login-container p.subtitle { margin-bottom: 10px; font-size: 0.8rem;}
+        .form-group input[type="text"],
+        .form-group input[type="email"], 
+        .form-group input[type="password"],
+        .login-btn,
+        .social-login-btn { font-size: 0.85rem; padding: 9px; padding-left: 30px;}
+        .form-group .input-icon {left: 10px; font-size:0.85rem;}
+        .form-group label + .input-icon { top: calc(50% + 5px);  }
+
+        .form-options {font-size: 0.7rem; margin-top: 10px; margin-bottom: 10px; }
+        .divider-text { margin-bottom: 10px; }
+        .social-login-btn { margin-bottom: 6px; }
+        .form-message { margin-top: 10px;}
+        .footer-links { margin-top: 15px;}
+    }
+     @media (max-width: 360px) { 
+        .login-container {
+            max-width: calc(100% - 20px);
+            padding-left: 20px;
+            padding-right: 20px; 
+        }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-page-wrapper">
+    <div class="login-container">
+      <div class="login-logo-container">
+          <i class="fas fa-university logo-icon"></i>
+          <a href="/home" class="logo-text">Edu<span>ra</span></a>
+      </div>
+      <h2>Welcome Back!</h2>
+      <p class="subtitle">Login to access your Edura dashboard.</p>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="username">Username or Email</label>
+          <i class="fas fa-user input-icon"></i>
+          <input type="text" id="username" name="username" placeholder="Your Username/Email" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <i class="fas fa-lock input-icon"></i>
+          <input type="password" id="password" name="password" placeholder="Your Password" required />
+        </div>
+
+        <div class="form-options">
+            <label class="remember-me">
+                <input type="checkbox" name="remember" /> Remember me
+            </label>
+            <a href="/forgot-password" class="forgot-password">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="login-btn">Login <i class="fas fa-sign-in-alt"></i></button>
+      </form>
+
+      <div class="divider-text">or</div>
+
+      <a href="#" class="social-login-btn google">
+          <i class="fab fa-google"></i> Login with Google
+      </a>
+      
+      <div class="form-message" id="formMessage"></div>
+
+      <div class="footer-links">
+        Don't have an account? <a href="/register">Sign Up</a> | <a href="/home">Back to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const formMessage = document.getElementById('formMessage');
+
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            formMessage.textContent = ''; 
+            formMessage.className = 'form-message'; 
+
+            const username = loginForm.username.value.trim();
+            const password = loginForm.password.value.trim();
+
+            if (username === '' || password === '') {
+                formMessage.textContent = 'Please enter both username and password.';
+                formMessage.classList.add('error');
+                return;
+            }
+
+            setTimeout(() => {
+                if (username === "edura" && password === "password123") { 
+                    formMessage.textContent = `Welcome, ${username}! (Demo login.)`;
+                    formMessage.classList.add('success');
+                    // loginForm.reset(); // Keep form data for demo visibility
+                } else {
+                    formMessage.textContent = 'Invalid username or password.';
+                    formMessage.classList.add('error');
+                }
+            }, 500);
+        });
+    }
+  </script>
+
+</body>
+</html>

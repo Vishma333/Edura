@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Edura | Our Story, Mission, and Values</title>
+  <!-- Reusing fonts and Font Awesome from the homepage -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      /* Palette based on #80acf8 */
+      --primary-blue: #3A5F94;
+      --secondary-blue: #5C85CB;
+      --accent-blue: #80acf8;
+      --highlight-glow: #A5C8FA;
+      --light-blue-bg-tint: #EBF1FF;
+
+      --light-bg: var(--light-blue-bg-tint);
+      --light-bg-alt: #FFFFFF;
+
+      --text-dark: #1A202C;
+      --text-dark-secondary: #4A5568;
+      --text-light: #FFFFFF;
+      --text-light-secondary: #F0F8FF;
+
+      --font-heading: 'Bricolage Grotesque', 'Arial Narrow Bold', sans-serif;
+      --font-body: 'Inter', sans-serif;
+
+      --shadow-sm: 0 2px 6px rgba(58, 95, 148, 0.08);
+      --shadow-md: 0 4px 12px rgba(58, 95, 148, 0.12);
+      --shadow-lg: 0 10px 20px rgba(58, 95, 148, 0.15);
+      --shadow-xl: 0 15px 30px rgba(58, 95, 148, 0.18);
+
+      --border-radius-sm: 8px;
+      --border-radius-md: 16px;
+      --border-radius-lg: 24px;
+      --border-radius-pill: 50px;
+
+      --transition-fast: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-med: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 25px; } 
+
+    /* --- Header & Navigation (Identical to homepage for consistency) --- */
+    header {
+      background-color: var(--primary-blue); 
+      color: var(--text-light); padding: 16px 0;
+      position: sticky; top: 0; z-index: 1000; 
+      box-shadow: 0 2px 8px rgba(58, 95, 148, 0.2); 
+      transition: background-color var(--transition-med), box-shadow var(--transition-med);
+    }
+    header.scrolled {
+      background-color: rgba(58, 95, 148, 0.85); 
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);        
+      box-shadow: 0 4px 12px rgba(58, 95, 148, 0.25);
+    }
+    .header-content {
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1360px; margin: 0 auto; padding: 0 25px;
+    }
+    .logo { display: flex; align-items: center; }
+    .logo-icon {
+      font-size: 2rem; color: var(--accent-blue); margin-right: 12px; 
+      transition: transform var(--transition-fast) ease-in-out;
+    }
+    .logo:hover .logo-icon { transform: rotate(-10deg) scale(1.15); }
+    .logo a {
+      font-family: var(--font-heading); font-size: 2.4rem; font-weight: 700;
+      color: var(--text-light); text-decoration: none; letter-spacing: -0.5px;
+    }
+    .logo a span {
+      background: linear-gradient(60deg, var(--text-light) 15%, var(--accent-blue) 85%);
+      -webkit-background-clip: text; -moz-background-clip: text; background-clip: text;
+      color: transparent; font-weight: 700;
+    } 
+    nav { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
+    nav a {
+      color: var(--text-light-secondary); text-decoration: none;
+      padding: 10px 14px; margin: 0 4px;    
+      font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; border-radius: var(--border-radius-sm);
+      transition: color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+      position: relative;
+    }
+    nav a::before {
+      content: ""; position: absolute; bottom: 0px; 
+      left: 50%; transform: translateX(-50%); width: 0; height: 2px; 
+      background-color: var(--accent-blue); border-radius: 1px; 
+      transition: width var(--transition-med) cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    nav a:hover, nav a.active { color: var(--text-light); transform: translateY(-1px); }
+    nav a:hover::before, nav a.active::before { width: 65%; } 
+    nav a.login-btn {
+      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--highlight-glow) 100%);
+      color: var(--primary-blue); padding: 10px 22px; 
+      border-radius: var(--border-radius-pill); margin-left: 12px; 
+      font-weight: 600; box-shadow: var(--shadow-sm);
+    }
+    nav a.login-btn:hover {
+      background: linear-gradient(135deg, var(--highlight-glow) 0%, var(--accent-blue) 100%);
+      box-shadow: var(--shadow-md); 
+    }
+    nav a.login-btn::before { display: none; }
+    /* --- End Header & Navigation --- */
+
+
+    /* About Us Page Specific Hero */
+    .about-hero {
+      background: linear-gradient(rgba(58, 95, 148, 0.8), rgba(92, 133, 203, 0.7)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZWR1Y2F0aW9uJTIwZ3JvdXB8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
+      color: var(--text-light);
+      padding: 100px 0 80px; 
+      text-align: center;
+    }
+    .about-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    .about-hero p.subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+      color: var(--text-light-secondary);
+      max-width: 700px;
+      margin: 0 auto 30px auto;
+    }
+
+    .section { padding: 70px 0; }
+    .section.bg-alt { background-color: var(--light-bg-alt); }
+    .section-title { /* MODIFIED: Simplified Centering */
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4.5vw, 2.6rem);
+      color: var(--primary-blue);
+      margin-bottom: 20px;
+      text-align: center; 
+      display: block;     
+      position: relative; 
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3.5px;
+      background-color: var(--accent-blue);
+      margin: 12px auto 0; /* Auto margins on block will center it */
+      border-radius: 2px;
+    }
+    .section-subtitle { 
+        font-size: 1.1rem;
+        color: var(--text-dark-secondary);
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 50px auto;
+    }
+    
+    .content-block {
+      margin-bottom: 50px; text-align: left; 
+    }
+    .content-block:last-child { margin-bottom: 0; }
+    .content-block h3 {
+      font-family: var(--font-heading); font-size: 1.8rem;
+      color: var(--secondary-blue); margin-bottom: 15px;
+    }
+    .content-block p {
+      font-size: 1.05rem; color: var(--text-dark-secondary);
+      line-height: 1.8; margin-bottom: 15px;
+    }
+    .content-block ul { list-style: none; padding-left: 0; }
+    .content-block ul li {
+        font-size: 1.05rem; color: var(--text-dark-secondary);
+        padding-left: 30px; position: relative; margin-bottom: 12px;
+    }
+    .content-block ul li::before {
+        content: '\f058'; font-family: "Font Awesome 6 Free"; font-weight: 900;
+        color: var(--accent-blue); position: absolute; left: 0; top: 2px; font-size: 1.1rem;
+    }
+
+    .mission-vision-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px; align-items: start; 
+    }
+    .mission-vision-grid .content-block {
+        background-color: var(--light-bg-alt); padding: 30px;
+        border-radius: var(--border-radius-md); box-shadow: var(--shadow-md);
+    }
+    .mission-vision-grid .content-block h3 { display: flex; align-items: center; }
+    .mission-vision-grid .content-block h3 i {
+        font-size: 1.5rem; color: var(--accent-blue); margin-right: 12px;
+        background-color: rgba(128, 172, 248, 0.15); padding: 10px; border-radius: 50%;
+    }
+    
+    .core-values-grid { 
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 25px;
+    }
+    .value-card {
+        background-color: var(--light-bg); border: 1px solid rgba(128, 172, 248, 0.2);
+        padding: 25px; border-radius: var(--border-radius-md); text-align: center;
+        transition: var(--transition-med); box-shadow: var(--shadow-sm);
+    }
+    .value-card:hover {
+        transform: translateY(-8px); box-shadow: var(--shadow-lg);
+        border-color: var(--accent-blue);
+    }
+    .value-card i { font-size: 2.2rem; color: var(--accent-blue); margin-bottom: 15px; }
+    .value-card h4 {
+        font-family: var(--font-heading); font-size: 1.3rem;
+        color: var(--primary-blue); margin-bottom: 8px;
+    }
+
+    .team-snapshot { text-align: center; }
+    .team-member-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px; margin-top: 30px;
+    }
+    .team-member { text-align: center; }
+    .team-member img {
+        width: 150px; height: 150px; border-radius: 50%;
+        object-fit: cover; margin-bottom: 15px;
+        border: 4px solid var(--accent-blue); box-shadow: var(--shadow-md);
+    }
+    .team-member h5 {
+        font-family: var(--font-heading); font-size: 1.2rem;
+        color: var(--primary-blue); margin-bottom: 5px;
+    }
+    .team-member span { font-size: 0.9rem; color: var(--text-dark-secondary); }
+
+    .cta-section-about {
+      background-color: var(--secondary-blue); 
+      color: var(--text-light); padding: 60px 0; text-align: center;
+      margin-top: 60px; 
+    }
+    .cta-section-about h2 {
+      font-family: var(--font-heading); font-size: 2.2rem;
+      margin-bottom: 15px; color: var(--text-light); 
+    }
+    .cta-section-about p {
+        font-size: 1.1rem; color: var(--text-light-secondary); margin-bottom: 30px;
+        max-width: 600px; margin-left: auto; margin-right: auto;
+    }
+    .cta-button { 
+      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--highlight-glow) 100%);
+      color: var(--primary-blue); 
+      padding: 15px 35px; text-decoration: none; font-family: var(--font-body);
+      font-size: 1.05rem; font-weight: 600; border-radius: var(--border-radius-pill);
+      transition: var(--transition-fast); display: inline-flex; align-items: center;
+      box-shadow: 0 3px 10px rgba(128, 172, 248, 0.35);
+    }
+    .cta-button i { margin-left: 10px; }
+    .cta-button:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(128, 172, 248, 0.45); }
+    
+    .animate-on-scroll {
+        opacity: 0; transform: translateY(40px);
+        transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+    .delay-100ms { animation-delay: 0.1s !important; }
+    .delay-200ms { animation-delay: 0.2s !important; }
+    .delay-300ms { animation-delay: 0.3s !important; }
+
+    /* --- Footer (Identical to homepage for consistency) --- */
+    footer { background-color: var(--primary-blue); color: var(--text-light-secondary); padding: 75px 0 25px 0; font-size: 0.92rem; position: relative; z-index: 0;} 
+    .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 50px; text-align: left; }
+    .footer-column h4 { font-family: var(--font-heading); font-size: 1.35rem; color: var(--text-light); margin-bottom: 22px; position: relative; font-weight: 600; }
+    .footer-column h4::after { content: ''; display: block; width: 50px; height: 3px; background-color: var(--accent-blue); margin-top: 10px; }
+    .footer-column ul { list-style: none; }
+    .footer-column ul li { margin-bottom: 12px; }
+    .footer-column ul li a { color: var(--text-light-secondary); text-decoration: none; transition: color var(--transition-fast), padding-left var(--transition-fast); }
+    .footer-column ul li a:hover { color: var(--highlight-glow); padding-left: 7px; } 
+    .footer-column p { margin-bottom: 12px; line-height: 1.65; }
+    .footer-column p i.fas { color: var(--accent-blue); margin-right: 10px; width: 20px; text-align: center; }
+    .social-icons { margin-top: 20px; }
+    .social-icons a { color: var(--text-light-secondary); font-size: 1.5rem; margin-right: 16px; transition: color var(--transition-fast), transform var(--transition-fast); }
+    .social-icons a:hover { color: var(--highlight-glow); transform: translateY(-3px) scale(1.1); } 
+    .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--secondary-blue); font-size: 0.88rem; color: #BDC8D8; }
+    .footer-bottom .fa-heart { color: var(--accent-blue); }
+    /* --- End Footer --- */
+
+    @media (max-width: 768px) {
+        .about-hero { padding: 80px 0 60px; }
+        .mission-vision-grid { grid-template-columns: 1fr; }
+        .section { padding: 60px 0; }
+        .section-title { font-size: clamp(1.8rem, 4vw, 2.2rem); }
+        .content-block h3 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+  <header id="mainHeader">
+    <div class="header-content">
+      <div class="logo">
+        <i class="fas fa-university logo-icon"></i>
+        <a href="/home">Edu<span>ra</span></a>
+      </div>
+      <nav>
+        <a href="/home">Home</a>
+        <a href="/about" class="active">About Us</a> 
+        <a href="/courses">Courses</a>
+        <a href="/departments">Departments</a>
+        <a href="/placement">Placement</a>
+        <a href="/mou">MOU</a>
+        <a href="/contact">Contact</a>
+        <a href="/login" class="login-btn">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="about-hero">
+    <div class="container">
+      <h1>Discover Edura: Pioneering Your Educational Future</h1>
+      <p class="subtitle">We are more than an institution; we are a community dedicated to fostering knowledge, innovation, and global collaboration to shape the leaders of tomorrow.</p>
+    </div>
+  </section>
+
+  <main>
+    <section id="our-story" class="section">
+      <div class="container">
+        <h2 class="section-title animate-on-scroll">Our Journey & Genesis</h2>
+        <div class="content-block animate-on-scroll">
+          <p>Edura was born from a vision to redefine educational landscapes. Founded by a collective of passionate educators, technologists, and industry visionaries, we identified a critical need for an educational model that is not only academically rigorous but also deeply connected to the evolving demands of the global workforce. Our journey began with a simple question: "How can we make high-quality, practical education accessible to all, empowering individuals to truly thrive?"</p>
+          <p>From humble beginnings, focusing on bridging the academia-industry gap through specialized workshops, Edura has grown into a comprehensive platform. We've meticulously built our curriculum, forged strategic partnerships (MOUs) with leading international institutions and corporations, and invested in a state-of-the-art digital infrastructure to create a seamless, engaging, and impactful learning ecosystem. Every step of our evolution has been guided by our commitment to student success and a belief in the transformative power of knowledge.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="mission-vision" class="section bg-alt">
+      <div class="container">
+        <h2 class="section-title animate-on-scroll">Our Guiding Principles</h2>
+        <div class="mission-vision-grid">
+          <div class="content-block animate-on-scroll">
+            <h3><i class="fas fa-bullseye"></i>Our Mission</h3>
+            <p>To empower learners of all backgrounds by providing accessible, innovative, and industry-relevant quality education. We are dedicated to fostering critical thinking, practical skills, and ethical leadership, enabling individuals to achieve their full potential and contribute meaningfully to a global society.</p>
+          </div>
+          <div class="content-block animate-on-scroll delay-100ms">
+            <h3><i class="fas fa-eye"></i>Our Vision</h3>
+            <p>To be a globally recognized leader in transformative education, known for our commitment to excellence, inclusivity, and the continuous pursuit of knowledge. We aspire to create a dynamic learning community that inspires lifelong learning and pioneers solutions to the world's most pressing challenges.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="core-values" class="section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Our Core Values</h2>
+            <p class="section-subtitle animate-on-scroll">These principles are the bedrock of our institution, guiding every decision and action at Edura.</p>
+            <div class="core-values-grid">
+                <div class="value-card animate-on-scroll">
+                    <i class="fas fa-star"></i>
+                    <h4>Excellence</h4>
+                    <p>We strive for the highest standards in teaching, research, and student support.</p>
+                </div>
+                <div class="value-card animate-on-scroll delay-100ms">
+                    <i class="fas fa-lightbulb"></i>
+                    <h4>Innovation</h4>
+                    <p>We embrace creativity and cutting-edge approaches to enhance the learning experience.</p>
+                </div>
+                <div class="value-card animate-on-scroll delay-200ms">
+                    <i class="fas fa-users"></i>
+                    <h4>Inclusivity</h4>
+                    <p>We foster a diverse and welcoming environment for all learners and collaborators.</p>
+                </div>
+                <div class="value-card animate-on-scroll delay-300ms">
+                    <i class="fas fa-handshake-angle"></i> 
+                    <h4>Integrity</h4>
+                    <p>We uphold the highest ethical standards in all our interactions and endeavors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="our-approach" class="section bg-alt">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">The Edura Difference</h2>
+            <div class="content-block animate-on-scroll">
+                <h3>Our Unique Approach to Education</h3>
+                <p>At Edura, we believe that true education extends beyond textbooks and lectures. Our approach is holistic, student-centric, and designed to cultivate not just knowledge, but wisdom and applicability. Here's what sets us apart:</p>
+                <ul>
+                    <li><strong>Industry-Integrated Learning:</strong> Our courses are co-created and constantly updated with input from industry leaders, ensuring you learn the skills employers are actively seeking.</li>
+                    <li><strong>Practical Exposure:</strong> We emphasize hands-on projects, real-world case studies, internships, and simulations to provide tangible experience.</li>
+                    <li><strong>Global Collaboration:</strong> Through our Memorandums of Understanding (MOUs) and international partnerships, we offer opportunities for global exposure, exchange programs, and collaborative research.</li>
+                    <li><strong>Personalized Mentorship:</strong> Our faculty and dedicated support teams provide personalized guidance, helping you navigate your academic journey and career aspirations.</li>
+                    <li><strong>Technology-Enhanced Learning:</strong> We leverage the latest educational technologies to create flexible, engaging, and accessible learning environments for all students, whether on-campus or online.</li>
+                    <li><strong>Focus on Holistic Development:</strong> We nurture critical thinking, problem-solving, communication, and leadership skills, preparing well-rounded individuals ready to make an impact.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="team-snapshot" class="section">
+        <div class="container team-snapshot">
+            <h2 class="section-title animate-on-scroll">Meet Some of Our Leaders</h2>
+            <p class="section-subtitle animate-on-scroll">Driven by a shared passion for education and innovation. (This is a brief snapshot, explore more on our dedicated team page!)</p>
+            <div class="team-member-grid">
+                <div class="team-member animate-on-scroll">
+                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Dr. Alistair Finch - Dean">
+                    <h5>Dr. Alistair Finch</h5>
+                    <span>President & Visionary</span>
+                </div>
+                <div class="team-member animate-on-scroll delay-100ms">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Prof. Elena Hayes - Head of Academics">
+                    <h5>Prof. Elena Hayes</h5>
+                    <span>Provost & Head of Academics</span>
+                </div>
+                <div class="team-member animate-on-scroll delay-200ms">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Mr. Samuel Green - Director of Innovation">
+                    <h5>Mr. Samuel Green</h5>
+                    <span>Director of Innovation & Technology</span>
+                </div>
+                 <div class="team-member animate-on-scroll delay-300ms">
+                    <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Ms. Chloe Davis - Head of Student Affairs">
+                    <h5>Ms. Chloe Davis</h5>
+                    <span>Dean of Student Success</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section-about animate-on-scroll">
+      <div class="container">
+        <h2>Ready to Be Part of the Edura Story?</h2>
+        <p>Discover our innovative programs or get in touch with our admissions team to start your journey with us.</p>
+        <a href="/courses" class="cta-button">Explore Our Courses <i class="fas fa-graduation-cap"></i></a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h4><i class="fas fa-school"></i> Edura Institute</h4>
+          <p>Dedicated to fostering innovation, critical thinking, and leadership through world-class education and research.
+          </p>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Navigate Edura</h4>
+          <ul>
+            <li><a href="/about">Our Mission & Vision</a></li>
+            <li><a href="/admission">Admissions Guide</a></li>
+            <li><a href="/courses">All Programs</a></li>
+            <li><a href="/departments">Academic Departments</a></li>
+            <li><a href="/campus-life">Campus Life</a></li>
+            <li><a href="/research">Research Initiatives</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Student Resources</h4>
+          <ul>
+            <li><a href="/student-portal">My Edura Portal</a></li>
+            <li><a href="/placement">Career Development</a></li>
+            <li><a href="/library">Online Library</a></li>
+            <li><a href="/mou">Global Partnerships</a></li>
+            <li><a href="/alumni">Alumni Network</a></li>
+            <li><a href="/support">Academic Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Connect With Us</h4>
+          <p><i class="fas fa-map-marked-alt"></i> 1 University Plaza, Edura City, EC 12345</p>
+          <p><i class="fas fa-phone-volume"></i> +1 (555) EDURA-01</p>
+          <p><i class="fas fa-envelope-open-text"></i> contact@edura.university</p>
+          <p><i class="fas fa-globe"></i> www.edura.university</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <script>document.write(new Date().getFullYear())</script> Edura University. All Rights Reserved. Built with <i class="fas fa-heart"></i> by Innovators.</p>
+    </div>
+  </footer>
+
+  <script>
+    const mainHeaderAbout = document.getElementById("mainHeader"); 
+    if (mainHeaderAbout) { 
+        window.addEventListener("scroll", function() {
+        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            mainHeaderAbout.classList.add("scrolled");
+        } else {
+            mainHeaderAbout.classList.remove("scrolled");
+        }
+        });
+    }
+    
+    const navLinksAbout = document.querySelectorAll("nav a:not(.login-btn)");
+    const currentPathAbout = window.location.pathname;
+    navLinksAbout.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === currentPathAbout || link.getAttribute('href') === currentPathAbout.replace('.html', '')) {
+        link.classList.add('active');
+      }
+    });
+
+    const animatedElementsAbout = document.querySelectorAll('.animate-on-scroll');
+    const observerOptionsAbout = { root: null, rootMargin: '0px', threshold: 0.1 };
+    const observerAbout = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                // observerAbout.unobserve(entry.target); 
+            }
+        });
+    }, observerOptionsAbout);
+    animatedElementsAbout.forEach(el => { observerAbout.observe(el); });
+  </script>
+</body>
+</html>
